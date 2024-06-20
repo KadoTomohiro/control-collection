@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* この辺はきちんとデザイントークン作っていく */
+input, select, textarea {
+  border: 1px solid #555555;
+  border-radius: 3px;
+  padding: 0.5rem;
+  font-size: 1rem;
+}

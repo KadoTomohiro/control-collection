@@ -1,0 +1,7 @@
+<ul>
+  @for (controlItem of list(); track controlItem.path) {
+    <li>
+      <a [routerLink]="['controls',controlItem.path]">{{controlItem.label}}</a>
+    </li>
+  }
+</ul>
