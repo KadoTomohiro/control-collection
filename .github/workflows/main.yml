@@ -22,4 +22,4 @@ jobs:
       - name: Prepare and deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm run ng -- deploy --base-href=/control-collection/ --name="KadoTomohiro" --email="mail@example.com"
+        run: npm run ng -- deploy --base-href=/control-collection/ --name="KadoTomohiro" --email="mail@example.com" --repo="https://github.com/KadoTomohiro/control-collection.git"
