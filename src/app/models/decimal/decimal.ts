@@ -1,3 +1,6 @@
+// 構造体的なオブジェクトで取り回したい（通信とか）ときとリッチなクラスでほしい時ロジックとあるから分けてみたけどなんかモヤモヤしてる
+// プリミティブとラッパーオブジェクトの関係的な。
+
 export interface DecimalFormat {
   integer: number;
   fraction:number;
@@ -6,7 +9,7 @@ export interface DecimalFormat {
 /**
  * 実数クラス
  */
-export class Decimal implements DecimalFormat{
+export class Decimal implements DecimalFormat {
 
   static equal(dec1: DecimalFormat, dec2: DecimalFormat): boolean {
     return dec1.integer === dec2.integer && dec1.fraction === dec2.fraction;
@@ -31,9 +34,9 @@ export class Decimal implements DecimalFormat{
     return `${this.integer}.${this.fraction}`;
   }
 
-  toJSON(): string {
+  toJSON() {
     const {integer, fraction} = this;
-    return JSON.stringify({integer, fraction});
+    return {integer, fraction};
   }
 
   static validate(dec: DecimalFormat): boolean {

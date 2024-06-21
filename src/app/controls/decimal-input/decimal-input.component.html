@@ -1,1 +1,13 @@
-<input type="number" [ngModel]="value().integer" [disabled]="disabled()">.<input type="number" [ngModel]="value().fraction" [disabled]="disabled()">
+<input type="number"
+       class="integer"
+       [ngModel]="value().integer"
+       [disabled]="disabled()"
+       (focus)="onFocus()"
+       (ngModelChange)="onChangeInteger($event)"
+>.<input type="number"
+         class="fraction"
+         [ngModel]="value().fraction"
+         [disabled]="disabled()"
+         (focus)="onFocus()"
+         (ngModelChange)="onChangeFraction($event)"
+>

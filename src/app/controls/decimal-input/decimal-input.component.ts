@@ -1,4 +1,4 @@
-import {Component, model, signal} from '@angular/core';
+import {Component, computed, effect, model, signal} from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor, FormsModule,
@@ -26,17 +26,25 @@ import {Decimal, DecimalFormat} from '@models/decimal/decimal';
   styleUrl: './decimal-input.component.css'
 })
 export class DecimalInputComponent implements ControlValueAccessor, Validator{
-  value = model<Decimal>(new Decimal({integer: 0, fraction: 0}));
-  #onChange = (_value: Decimal) => {};
-  #onTouched = () => {};
+  readonly value = model<DecimalFormat>(new Decimal({integer: 0, fraction: 0}));
+  readonly #changeValue = computed(() => this.value(), {equal: Decimal.equal})
+  #onChange = (_value: DecimalFormat) => {};
+  #onTouch = () => {};
+  touched = signal<boolean>(false)
   disabled= signal(false);
+
+  constructor() {
+    effect(() => {
+      this.#onChange(this.#changeValue())
+    });
+  }
 
   registerOnChange(fn: any): void {
     this.#onChange = fn;
   }
 
   registerOnTouched(fn: any): void {
-    this.#onTouched = fn;
+    this.#onTouch = fn;
   }
 
   registerOnValidatorChange(fn: () => void): void {
@@ -46,12 +54,31 @@ export class DecimalInputComponent implements ControlValueAccessor, Validator{
     this.disabled.set(isDisabled);
   }
 
-  validate(control: AbstractControl): ValidationErrors | null {
+  validate(control: AbstractControl<DecimalFormat>): ValidationErrors | null {
+    const {value} = control
+    Decimal.validate(value)
     return null;
   }
 
   writeValue(value: DecimalFormat): void {
     this.value.set(new Decimal(value));
+  }
+
+  markAsTouch() {
+    if (this.touched()) return
+    this.#onTouch()
+    this.touched.set(true);
+  }
+
+  onFocus() {
+    this.markAsTouch();
+  }
+
+  onChangeInteger(integer: number): void {
+    this.value.update(crr => (new Decimal({...crr, integer})))
+  }
+  onChangeFraction(fraction: number): void {
+    this.value.update(crr => (new Decimal({...crr, fraction})))
   }
 
 }

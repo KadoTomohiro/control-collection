@@ -1,3 +1,7 @@
 input {
   width: 4rem
 }
+
+.integer {
+  text-align: right;
+}
