@@ -27,6 +27,9 @@
       "@pages/*": [
         "./src/app/pages/*"
       ],
+      "@models/*": [
+        "./src/app/models/*"
+      ],
       "@domain/*": [
         "./src/app/domain/*"
       ],

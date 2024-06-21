@@ -7,7 +7,7 @@ import {
   ValidationErrors,
   Validator
 } from '@angular/forms';
-import {Decimal, DecimalFormat} from '@domain/decimal/decimal';
+import {Decimal, DecimalFormat} from '@models/decimal/decimal';
 
 /**
  * 実数入力コンポーネント
@@ -30,8 +30,6 @@ export class DecimalInputComponent implements ControlValueAccessor, Validator{
   #onChange = (_value: Decimal) => {};
   #onTouched = () => {};
   disabled= signal(false);
-
-
 
   registerOnChange(fn: any): void {
     this.#onChange = fn;

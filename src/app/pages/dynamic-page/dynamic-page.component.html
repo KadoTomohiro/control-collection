@@ -1,0 +1,12 @@
+<app-decimal-input [formControl]="constrol"></app-decimal-input>
+<app-control-page-template>
+  @if (!!controlInfo) {
+    <ng-container *ngComponentOutlet="
+    controlInfo.component,
+    inputs: controlInfo.inputs,
+
+"></ng-container>
+  }
+</app-control-page-template>
+
+
