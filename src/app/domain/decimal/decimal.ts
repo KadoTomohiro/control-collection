@@ -31,6 +31,11 @@ export class Decimal implements DecimalFormat{
     return `${this.integer}.${this.fraction}`;
   }
 
+  toJSON(): string {
+    const {integer, fraction} = this;
+    return JSON.stringify({integer, fraction});
+  }
+
   static validate(dec: DecimalFormat): boolean {
     return Number.isInteger(dec.integer) && Number.isInteger(dec.fraction) && dec.fraction >= 0
   }
