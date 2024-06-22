@@ -1,9 +1,18 @@
 <article>
-  <header>
-    <h2>[WIP] Decimal Inpt</h2>
-     <p>実数入力コントロール</p>
-  </header>
   <app-control-page-template>
+    <span class="title">Decimal Input</span>
+    <div class="description">実数値を入力するコンポーネント。整数部、小数部で入力する。</div>
+    <div class="type">
+      DecimalTemplate
+      <div>
+        <!-- TODO:コード用のコンポーネントを作る-->
+      <pre>
+    &#0123;
+      integer: number;
+      fraction: number;
+    &#0124;</pre>
+      </div>
+    </div>
     <app-decimal-input [formControl]="control"></app-decimal-input>
   </app-control-page-template>
 

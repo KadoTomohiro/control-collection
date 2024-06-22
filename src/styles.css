@@ -1,4 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+/* リセット */
+* {
+  margin: 0;
+  padding: 0;
+}
 
 /* この辺はきちんとデザイントークン作っていく */
 input, select, textarea {
@@ -7,3 +12,5 @@ input, select, textarea {
   padding: 0.5rem;
   font-size: 1rem;
 }
+
+

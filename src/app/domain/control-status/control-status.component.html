@@ -1,26 +1,42 @@
 <dl>
-  <dt>Value</dt>
-  <dd>{{control().value | json}}</dd>
-  <dt>Valid</dt>
-  <dd>{{control().valid}}</dd>
-  <dt>Invalid</dt>
-  <dd>{{control().invalid}}</dd>
-  <dt>Pending</dt>
-  <dd>{{control().pending}}</dd>
-  <dt>Errors</dt>
-  <dd>{{control().errors | json}}</dd>
-  <dt>Disabled</dt>
-  <dd>{{control().disabled}}</dd>
-  <dt>Enabled</dt>
-  <dd>{{control().enabled}}</dd>
-  <dt>Pristine</dt>
-  <dd>{{control().pristine}}</dd>
-  <dt>Dirty</dt>
-  <dd>{{control().dirty}}</dd>
-  <dt>Touched</dt>
-  <dd>{{control().touched}}</dd>
-  <dt>Untouched</dt>
-  <dd>{{control().untouched}}</dd>
-  <dt>Status</dt>
-  <dd>{{control().status}}</dd>
+  <dt class="single"><span appLabel>Value</span></dt>
+  <dd class="single">{{control().value | json}}</dd>
+  <dt class="single"><span appLabel>Errors</span></dt>
+  <dd class="single">{{control().errors | json}}</dd>
+  <div class="pair">
+    <dt><span appLabel>Valid</span></dt>
+    <dd>{{control().valid}}</dd>
+  </div>
+  <div class="pair">
+    <dt><span appLabel>Invalid</span></dt>
+    <dd>{{control().invalid}}</dd>
+  </div>
+  <dt class="single"><span appLabel>Pending</span></dt>
+  <dd class="single">{{control().pending}}</dd>
+  <div class="pair">
+    <dt><span appLabel>Disabled</span></dt>
+    <dd>{{control().disabled}}</dd>
+  </div>
+  <div class="pair">
+    <dt><span appLabel>Enabled</span></dt>
+    <dd>{{control().enabled}}</dd>
+  </div>
+  <div class="pair">
+    <dt><span appLabel>Pristine</span></dt>
+    <dd>{{control().pristine}}</dd>
+  </div>
+  <div class="pair">
+    <dt><span appLabel>Dirty</span></dt>
+    <dd>{{control().dirty}}</dd>
+  </div>
+  <div class="pair">
+    <dt><span appLabel>Touched</span></dt>
+    <dd>{{control().touched}}</dd>
+  </div>
+  <div class="pair">
+    <dt><span appLabel>Untouched</span></dt>
+    <dd>{{control().untouched}}</dd>
+  </div>
+  <dt class="single"><span appLabel>Status</span></dt>
+  <dd class="single">{{control().status}}</dd>
 </dl>

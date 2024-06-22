@@ -1,4 +1,24 @@
-<ng-content></ng-content>
-@if (control) {
-  <app-control-status [control]="control"></app-control-status>
-}
+<article>
+  <header>
+    <h3><ng-content select=".title"></ng-content></h3>
+  </header>
+  <section>
+    <h4>概要</h4>
+    <ng-content select=".description"></ng-content>
+  </section>
+  <section>
+    <h4>適合する型</h4>
+    <ng-content select=".type"></ng-content>
+  </section>
+  <section>
+    <h4>コンポーネントサンプル</h4>
+    <ng-content></ng-content>
+  </section>
+  <section>
+    <h4>コントロールステータス</h4>
+    @if (control) {
+      <app-control-status [control]="control"></app-control-status>
+    }
+  </section>
+
+</article>

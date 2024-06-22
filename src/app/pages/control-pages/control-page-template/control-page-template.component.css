@@ -1,0 +1,7 @@
+article {
+  margin: 1rem 4rem
+}
+article > * + * {
+  margin-top: 1rem;
+}
+

@@ -1,0 +1,31 @@
+dl {
+  max-width: 15rem;
+  display: grid;
+  grid-template-columns: max-content max-content;
+  grid-template-rows: none;
+  padding: 0 0.5rem;
+}
+
+dl> * + dd,div {
+  border-bottom: 1px solid #555;
+}
+
+dt {
+  display: inline;
+  height: max-content;
+}
+
+dd {
+  padding-bottom: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.pair {
+  display: inline;
+
+}
+
+.single {
+  grid-column: 1/3;
+}
+
