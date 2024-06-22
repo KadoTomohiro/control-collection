@@ -11,4 +11,9 @@ export const controlRoutes: Routes = [
     loadComponent: () => import('@pages/control-pages/decimal-input-page/decimal-input-page.component')
       .then(m => m.DecimalInputPageComponent)
   },
+  {
+    path: 'counter',
+    loadComponent: () => import('@pages/control-pages/counter-page/counter-page.component')
+      .then(m => m.CounterPageComponent)
+  },
 ]

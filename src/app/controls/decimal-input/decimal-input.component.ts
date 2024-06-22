@@ -31,8 +31,8 @@ export class DecimalInputComponent implements ControlValueAccessor, Validator{
   readonly #changeValue = computed(() => this.value(), {equal: Decimal.equal})
   #onChange = (_value: DecimalFormat) => {};
   #onTouch = () => {};
-  touched = signal<boolean>(false)
-  disabled= signal(false);
+  readonly touched = signal<boolean>(false)
+  readonly disabled= signal(false);
 
   registerOnChange(fn: any): void {
     this.#onChange = fn;

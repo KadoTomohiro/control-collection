@@ -6,11 +6,13 @@
 }
 
 /* この辺はきちんとデザイントークン作っていく */
-input, select, textarea {
+input, select, textarea, button {
   border: 1px solid #555555;
   border-radius: 3px;
   padding: 0.5rem;
   font-size: 1rem;
 }
 
-
+button {
+  min-width: 2.15rem;
+}

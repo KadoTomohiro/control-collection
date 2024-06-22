@@ -1,7 +1,7 @@
-import { DecimalValidator } from './decimal-validator';
+import { decimalValidator } from './decimal-validator';
 
 describe('DecimalValidator', () => {
   it('should create an instance', () => {
-    expect(new DecimalValidator()).toBeTruthy();
+    expect(decimalValidator).toBeTruthy();
   });
 });
