@@ -4,8 +4,8 @@ import {controlRoutes} from "./controls.routes";
 export const routes: Routes = [
   {
     path: '',
-    loadComponent: () => import('./pages/control-list-page/control-list-page.component')
-      .then(m => m.ControlListPageComponent),
+    loadComponent: () => import('./pages/top-page/top-page.component')
+      .then(m => m.TopPageComponent)
   },
   // {
   //   path: 'dynamic/:control',
