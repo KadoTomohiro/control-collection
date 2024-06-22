@@ -6,9 +6,19 @@
     <h4>概要</h4>
     <ng-content select=".description"></ng-content>
   </section>
+  @if (hasAlert) {
+    <section class="alert">
+      <h4>アラート</h4>
+      <p><ng-content select=".alert"></ng-content></p>
+    </section>
+  }
   <section>
     <h4>適合する型</h4>
     <ng-content select=".type"></ng-content>
+  </section>
+  <section>
+    <h4>独自バリデーション</h4>
+    <ng-content select=".validation"></ng-content>
   </section>
   <section>
     <h4>コンポーネントサンプル</h4>
@@ -20,5 +30,6 @@
       <app-control-status [control]="control"></app-control-status>
     }
   </section>
+
 
 </article>

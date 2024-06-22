@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {DecimalInputComponent} from "@controls/decimal-input/decimal-input.component";
 import {ControlPageTemplateComponent} from "@pages/control-pages/control-page-template/control-page-template.component";
-import { FormControl, ReactiveFormsModule} from "@angular/forms";
+import {FormControl, ReactiveFormsModule} from "@angular/forms";
 import { DecimalFormat} from "@models/decimal/decimal";
 
 @Component({
