@@ -18,10 +18,6 @@ export class Decimal implements DecimalFormat {
   readonly integer: number;
   readonly fraction:number;
   constructor(initial: DecimalFormat) {
-    if (Decimal.validate(initial)) {
-      this.integer = NaN;
-      this.fraction = NaN;
-    }
     this.integer = initial.integer;
     this.fraction = initial.fraction;
   }
@@ -37,10 +33,6 @@ export class Decimal implements DecimalFormat {
   toJSON() {
     const {integer, fraction} = this;
     return {integer, fraction};
-  }
-
-  static validate(dec: DecimalFormat): boolean {
-    return Number.isInteger(dec.integer) && Number.isInteger(dec.fraction) && dec.fraction >= 0
   }
 }
 

@@ -5,9 +5,10 @@ import {
   NG_VALIDATORS,
   NG_VALUE_ACCESSOR,
   ValidationErrors,
-  Validator
+  Validator, Validators
 } from '@angular/forms';
 import {Decimal, DecimalFormat} from '@models/decimal/decimal';
+import {decimalValidator} from "@controls/decimal-input/decimal-validator";
 
 /**
  * 実数入力コンポーネント
@@ -55,9 +56,8 @@ export class DecimalInputComponent implements ControlValueAccessor, Validator{
   }
 
   validate(control: AbstractControl<DecimalFormat>): ValidationErrors | null {
-    const {value} = control
-    Decimal.validate(value)
-    return null;
+
+    return decimalValidator(control);
   }
 
   writeValue(value: DecimalFormat): void {
@@ -79,6 +79,7 @@ export class DecimalInputComponent implements ControlValueAccessor, Validator{
   }
   onChangeFraction(fraction: number): void {
     this.value.update(crr => (new Decimal({...crr, fraction})))
+    console.log(this.value())
   }
 
 }
