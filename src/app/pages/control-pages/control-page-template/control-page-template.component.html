@@ -4,17 +4,23 @@
   </header>
   <div class="information">
     <section>
-      <h4>概要</h4>
+      <h4>Description</h4>
       <ng-content select=".description">未入力</ng-content>
     </section>
     @if (hasAlert) {
       <section class="alert">
-        <h4>アラート</h4>
-        <p><ng-content select=".alert"></ng-content></p>
+        <h4>Alert</h4>
+        <ng-content select=".alert"></ng-content>
+      </section>
+    }
+    @if(hasIssue) {
+      <section class="issue">
+        <h4>Issue</h4>
+        <ng-content select=".issue"></ng-content>
       </section>
     }
     <section>
-      <h4>適合する型</h4>
+      <h4>Type</h4>
       <ng-content select=".type">未入力</ng-content>
     </section>
     <section>
@@ -23,20 +29,20 @@
     </section>
     <section>
       <h4>Outputs</h4>
-      <ng-content select=".inputs">なし</ng-content>
+      <ng-content select=".outputs">なし</ng-content>
     </section>
     <section>
-      <h4>独自バリデーション</h4>
+      <h4>Original Validation</h4>
       <ng-content select=".validation">なし</ng-content>
     </section>
   </div>
   <div class="playground">
-    <section>
-      <h4>コンポーネントサンプル</h4>
+    <section class="control">
+      <h4>Control Example</h4>
       <ng-content></ng-content>
     </section>
-    <section>
-      <h4>コントロールステータス</h4>
+    <section class="control-status">
+      <h4>Control Status</h4>
 <!--      @if (control) {-->
 <!--        <app-control-status [control]="control"></app-control-status>-->
 <!--      }-->
@@ -46,6 +52,30 @@
           <app-counter [(ngModel)]="counter" [min]="0" [max]="controlLength - 1"></app-counter>
         }
       }
+    </section>
+    <section>
+      <h4>Commands</h4>
+      <div>
+        <ng-content select=".commands"></ng-content>
+      </div>
+    </section>
+    <section>
+      <h4>Set Inputs</h4>
+      <div>
+        <ng-content select=".setInputs"></ng-content>
+      </div>
+    </section>
+    <section>
+      <h4>Handle Outputs</h4>
+      <div>
+        <ng-content select=".handleOutputs"></ng-content>
+      </div>
+    </section>
+    <section>
+      <h4>Attach Validators</h4>
+      <div>
+        <ng-content select=".attachValidators"></ng-content>
+      </div>
     </section>
   </div>
 

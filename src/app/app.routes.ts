@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import {Routes} from '@angular/router';
 import {controlRoutes} from "./controls.routes";
 
 export const routes: Routes = [
@@ -15,5 +15,10 @@ export const routes: Routes = [
   {
     path: 'controls',
     children: controlRoutes
+  },
+  {
+    path: 'controls/usage-guide',
+    loadComponent: () => import('./pages/control-pages/usage-guide-page/usage-guide-page.component')
+      .then(m => m.UsageGuidePageComponent)
   }
 ];

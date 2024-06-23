@@ -15,4 +15,20 @@ input, select, textarea, button {
 
 button {
   min-width: 2.15rem;
+  background-color: #555555;
+  color: #ffffff;
+}
+
+button:hover {
+  background-color: #777777;
+}
+
+button:active {
+  background-color: #cccccc;
+  color: #000000;
+}
+
+button:disabled {
+  background-color: #cccccc;
+  color: #555555;
 }

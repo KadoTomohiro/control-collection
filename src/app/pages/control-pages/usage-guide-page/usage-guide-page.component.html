@@ -1,0 +1,41 @@
+<app-control-page-template>
+  <div class="title">
+    コンポーネント名
+  </div>
+  <div class="description">
+    コンポーネントの説明。
+  </div>
+  <div class="alert" #alert>
+    既知のバグ、未実装機能などを記載しておく。表示するためには<code>#alert</code>をつけておく必要がある。
+  </div>
+  <div class="issue" #issue>
+    機能修正についての検討事項などを書く。表示するためには<code>#issue</code>をつけておく必要がある。
+  </div>
+  <div class="type">
+    コントロールが想定している型を書く。独自オブジェクトの場合、構造も書く。
+  </div>
+  <div class="inputs">コントロールのインプットプロパティを書く。型と説明も書く。</div>
+  <div class="outputs">コンポーネントの発行するイベントを書く。イベントオブジェクトの型も書く</div>
+  <div class="validation">コンポーネント内部のバリデーションルールを書く。</div>
+  <form [formGroup]="form">
+    <input type="number" formControlName="control2">
+    <input type="number" formControlName="control3">
+  </form>
+  <input type="text" [formControl]="control">
+  <input type="text" [formControl]="control4">
+  <p>デフォルトのコンテンツはコントロールサンプル表示エリアに表示される。</p>
+  <p><code>formControl</code>/<code>formControlName</code>ディレクティブがバインドされている場合、この下にコントロールの状態を示すリストが表示される。複数のコントロールを設置した場合、カウンターで選択</p>
+  <div class="commands">
+    コントロールに対するコマンド。非活性化など。
+  </div>
+  <div class="setInputs">
+    コントロールにセットするinputの設定。
+  </div>
+  <div class="handleOutputs">
+    コントロールのハンドリング結果の表示。
+  </div>
+  <div class="attachValidators">
+    バリデータの付け外し
+  </div>
+</app-control-page-template>
+
