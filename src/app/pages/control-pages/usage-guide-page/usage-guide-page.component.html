@@ -17,24 +17,19 @@
   <div class="inputs">コントロールのインプットプロパティを書く。型と説明も書く。</div>
   <div class="outputs">コンポーネントの発行するイベントを書く。イベントオブジェクトの型も書く</div>
   <div class="validation">コンポーネント内部のバリデーションルールを書く。</div>
-  <form [formGroup]="form">
-    <input type="number" formControlName="control2">
-    <input type="number" formControlName="control3">
-  </form>
-  <input type="text" [formControl]="control">
-  <input type="text" [formControl]="control4">
+  <input type="text" [ngModel]="value">
   <p>デフォルトのコンテンツはコントロールサンプル表示エリアに表示される。</p>
-  <p><code>formControl</code>/<code>formControlName</code>ディレクティブがバインドされている場合、この下にコントロールの状態を示すリストが表示される。複数のコントロールを設置した場合、カウンターで選択</p>
+  <p><code>formControl</code>/<code>formControlName</code>/<code>ngModel</code>ディレクティブがバインドされている場合、この下にコントロールの状態を示すリストが表示される。</p>
   <div class="commands">
     コントロールに対するコマンド。非活性化など。
   </div>
-  <div class="setInputs">
+  <div class="set-inputs">
     コントロールにセットするinputの設定。
   </div>
-  <div class="handleOutputs">
+  <div class="handle-outputs">
     コントロールのハンドリング結果の表示。
   </div>
-  <div class="attachValidators">
+  <div class="attach-validators">
     バリデータの付け外し
   </div>
 </app-control-page-template>

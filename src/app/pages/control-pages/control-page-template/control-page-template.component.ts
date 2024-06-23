@@ -61,7 +61,8 @@ export class ControlPageTemplateComponent {
     const guard = (value: FormControlDirective | FormControlName): value is FormControlDirective => {
       return 'form' in value
     }
-    return (this.controlList?.toArray() ?? []).map(controlWrapper => {
+    return (this.controlList?.toArray() ?? [])
+      .map(controlWrapper => {
       if (guard(controlWrapper)) {
         return controlWrapper.form
       } else {
@@ -94,12 +95,15 @@ export class ControlPageTemplateComponent {
   // ContentChildrenで取得したFormControlに対し、活性制御をしようとした残骸。
   // 参照はできるがdisable/enableは無理。setvalueはいけた。理由がよくわからない
   // toggleDisabled(): void {
+  //
+  //   console.log(this.controlList?.get(this.counter))
   //   const control = this.currentControl;
   //   if (!control) return;
-  //   console.log(control)
-  //   const {disabled, enable, disable } = control
-  //   const command = disabled ? enable : disable;
-  //   console.log(command)
-  //   command()
+  //   this.controlList?.get(this.counter)?.
+    // console.log(control)
+    // const {disabled, enable, disable } = control
+    // const command = disabled ? enable : disable;
+    // console.log(command)
+    // command()
   // }
 }

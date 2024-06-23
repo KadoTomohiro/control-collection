@@ -48,9 +48,6 @@
 <!--      }-->
       @if (currentControl) {
         <app-control-status [control]="currentControl"></app-control-status>
-        @if (isMultiControl) {
-          <app-counter [(ngModel)]="counter" [min]="0" [max]="controlLength - 1"></app-counter>
-        }
       }
     </section>
     <section>
@@ -62,19 +59,19 @@
     <section>
       <h4>Set Inputs</h4>
       <div>
-        <ng-content select=".setInputs"></ng-content>
+        <ng-content select=".set-inputs"></ng-content>
       </div>
     </section>
     <section>
       <h4>Handle Outputs</h4>
       <div>
-        <ng-content select=".handleOutputs"></ng-content>
+        <ng-content select=".handle-outputs"></ng-content>
       </div>
     </section>
     <section>
       <h4>Attach Validators</h4>
       <div>
-        <ng-content select=".attachValidators"></ng-content>
+        <ng-content select=".attach-validators"></ng-content>
       </div>
     </section>
   </div>

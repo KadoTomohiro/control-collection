@@ -1,7 +1,7 @@
-import { Defined } from './defined';
+import { defined } from './defined';
 
 describe('Defined', () => {
   it('should create an instance', () => {
-    expect(new Defined()).toBeTruthy();
+    expect(defined).toBeTruthy();
   });
 });

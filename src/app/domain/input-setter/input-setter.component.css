@@ -1,0 +1,6 @@
+div {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  width: 60%; /* いい加減すぎる*/
+}

@@ -1,0 +1,23 @@
+<div [formGroup]="form">
+  @for (name of propertyNames(); track name) {
+    <label>
+      {{name}}
+      @switch (getProperty(name).type) {
+        @case ('string') {
+          <input type="text" [formControlName]="name">
+        }
+        @case ('number') {
+          <input type="number" [formControlName]="name">
+        }
+        @case ('boolean') {
+          <input type="checkbox" [formControlName]="name">
+        }
+        @case ('object') {
+          <input type="text" [formControlName]="name">
+        }
+      }
+    </label>
+  }
+  <button type="button" (click)="reflect()">反映</button>
+  {{form.value | json}}
+</div>
