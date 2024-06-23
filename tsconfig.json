@@ -35,6 +35,12 @@
       ],
       "@controls/*": [
         "./src/app/controls/*"
+      ],
+      "@parts/*": [
+        "./src/app/parts/*"
+      ],
+      "@utility/*": [
+        "./src/app/utility/*"
       ]
     }
   },

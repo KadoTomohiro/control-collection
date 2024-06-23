@@ -1,7 +1,7 @@
 import {Component, input} from '@angular/core';
 import {JsonPipe} from "@angular/common";
 import {AbstractControl} from "@angular/forms";
-import {LabelComponent} from "../../parts/label/label.component";
+import {LabelComponent} from "@parts/label/label.component";
 
 @Component({
   selector: 'app-control-status',

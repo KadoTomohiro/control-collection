@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {ControlPageTemplateComponent} from "@pages/control-pages/control-page-template/control-page-template.component";
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
 import {CounterComponent} from "@controls/counter/counter.component";
-import {DataListComponent} from "../../../parts/data-list/data-list.component";
+import {DataListComponent} from "@parts/data-list/data-list.component";
 
 @Component({
   selector: 'app-counter-page',

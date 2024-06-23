@@ -1,5 +1,14 @@
 import {Component, input, model, signal} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
+import {
+  AbstractControl,
+  ControlValueAccessor,
+  NG_VALIDATORS,
+  NG_VALUE_ACCESSOR,
+  ValidationErrors,
+  Validator, Validators
+} from "@angular/forms";
+import {defined} from "@utility/defined";
+import {toObservable} from "@angular/core/rxjs-interop";
 
 @Component({
   selector: 'app-counter',
@@ -7,11 +16,12 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
   imports: [],
   providers: [
     { provide: NG_VALUE_ACCESSOR, useExisting: CounterComponent, multi: true },
+    { provide: NG_VALIDATORS, useExisting: CounterComponent, multi: true}
   ],
   templateUrl: './counter.component.html',
   styleUrl: './counter.component.css'
 })
-export class CounterComponent implements ControlValueAccessor{
+export class CounterComponent implements ControlValueAccessor, Validator{
 
   readonly value = model<number>(0);
   readonly disabled = signal<boolean>(false);
@@ -22,7 +32,14 @@ export class CounterComponent implements ControlValueAccessor{
   readonly max = input<number>();
 
   #onChange = (_value: number) => {};
-  #onTouched = () => {}
+  #onTouched = () => {};
+  #onValidatorChange = () => {};
+
+  constructor() {
+    toObservable(this.min).subscribe(this.#onValidatorChange);
+    toObservable(this.max).subscribe(this.#onValidatorChange);
+    toObservable(this.value).subscribe(() => this.#onChange(this.value()));
+  }
 
   registerOnChange(fn: any): void {
     this.#onChange = fn;
@@ -30,6 +47,10 @@ export class CounterComponent implements ControlValueAccessor{
 
   registerOnTouched(fn: any): void {
     this.#onTouched = fn
+  }
+
+  registerOnValidatorChange(fn: () => void): void {
+    this.#onValidatorChange = fn;
   }
 
   setDisabledState(isDisabled: boolean): void {
@@ -44,13 +65,10 @@ export class CounterComponent implements ControlValueAccessor{
     this.markAsDirty()
 
     const max = this.max()
-    if (max !== undefined && this.value() >= max) return;
+    if (defined<number>(max) && this.value() >= max) return;
 
     if (this.disabled()) return;
     this.value.update(v => v + this.increment())
-
-
-    this.#onChange(this.value())
   }
 
   onReduce() {
@@ -58,12 +76,9 @@ export class CounterComponent implements ControlValueAccessor{
     if (this.disabled()) return;
 
     const min = this.min()
-    if (min !== undefined && this.value() <= min) return;
+    if (defined<number>(min) && this.value() <= min) return;
 
     this.value.update(v => v - this.increment());
-
-
-    this.#onChange(this.value())
   }
 
   markAsDirty() {
@@ -71,4 +86,14 @@ export class CounterComponent implements ControlValueAccessor{
       this.#onTouched()
     }
   }
+
+  validate(control: AbstractControl): ValidationErrors | null {
+    const min = this.min();
+    const minValidationResult = defined<number>(min) ? Validators.min(min)(control) : null
+    const max = this.max();
+    const maxValidationResult = defined<number>(max) ? Validators.max(max)(control) : null
+    return minValidationResult || maxValidationResult;
+  }
+
+
 }
