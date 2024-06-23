@@ -1,2 +1,0 @@
-import{Qa as a,Ra as i,Z as o,_a as n,bb as r}from"./chunk-LQFZWGCH.js";var d=(()=>{let e=class e{};e.\u0275fac=function(u){return new(u||e)},e.\u0275cmp=o({type:e,selectors:[["app-top-page"]],standalone:!0,features:[r],decls:4,vars:0,template:function(u,s){u&1&&(a(0,"header")(1,"h2"),n(2,"\u30C8\u30C3\u30D7\u30DA\u30FC\u30B8"),i()(),n(3,` \u3053\u306E\u30AB\u30BF\u30ED\u30B0\u306E\u76EE\u7684\u3068\u304B\u306A\u3093\u304B\u66F8\u304F
-`))}});let t=e;return t})();export{d as TopPageComponent};
