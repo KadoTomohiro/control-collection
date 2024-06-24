@@ -1,0 +1,33 @@
+.button-case {
+  display: inline-block;
+  border: 1px solid #555555;
+  border-radius: 3px;
+}
+
+.option {
+  display: inline-block;
+  padding: 0.5rem;
+}
+.option:not(:first-child) {
+  border-left: 1px solid #555555;
+}
+
+.option:hover {
+  cursor: pointer;
+  background-color: #dddddd;
+}
+
+.option.selected {
+  color: #ffffff;
+  background-color: #555555;
+}
+
+.option.disabled {
+  color: #eeeeee;
+  background-color: #dddddd;
+}
+
+.option.disabled:hover {
+  cursor: not-allowed;
+
+}

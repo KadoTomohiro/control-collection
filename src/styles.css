@@ -6,7 +6,7 @@
 }
 
 /* この辺はきちんとデザイントークン作っていく */
-input, select, textarea, button {
+input, select, textarea, button, .control-outline {
   border: 1px solid #555555;
   border-radius: 3px;
   padding: 0.5rem;

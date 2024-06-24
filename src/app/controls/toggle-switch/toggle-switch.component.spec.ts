@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DynamicPageComponent } from './dynamic-page.component';
+import { ToggleSwitchComponent } from './toggle-switch.component';
 
-describe('DynamicPageComponent', () => {
-  let component: DynamicPageComponent;
-  let fixture: ComponentFixture<DynamicPageComponent>;
+describe('ToggleSwitchComponent', () => {
+  let component: ToggleSwitchComponent;
+  let fixture: ComponentFixture<ToggleSwitchComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DynamicPageComponent]
+      imports: [ToggleSwitchComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DynamicPageComponent);
+    fixture = TestBed.createComponent(ToggleSwitchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

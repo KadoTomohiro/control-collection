@@ -4,10 +4,14 @@
        [disabled]="disabled()"
        (focus)="onFocus()"
        (ngModelChange)="onChangeInteger($event)"
+       [attr.placeholder]="placeholders()?.integer"
 >.<input type="number"
          class="fraction"
          [ngModel]="value().fraction"
          [disabled]="disabled()"
          (focus)="onFocus()"
          (ngModelChange)="onChangeFraction($event)"
+         [attr.placeholder]="placeholders()?.fraction"
+
 >
+

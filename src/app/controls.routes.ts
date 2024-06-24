@@ -20,5 +20,10 @@ export const controlRoutes: Routes = [
     path: 'toggle-button',
     loadComponent: () => import('@pages/control-pages/toggle-button-page/toggle-button-page.component')
       .then(m => m.ToggleButtonPageComponent)
+  },
+  {
+    path: 'toggle-switch',
+    loadComponent: () => import('@pages/control-pages/toggle-switch-page/toggle-switch-page.component')
+      .then(m => m.ToggleSwitchPageComponent)
   }
 ]

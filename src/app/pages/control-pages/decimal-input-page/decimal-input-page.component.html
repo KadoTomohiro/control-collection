@@ -13,6 +13,13 @@
     &#0124;</pre>
       </div>
     </div>
+    <div class="inputs">
+      <app-data-list>
+        <dt>placeholder</dt>
+        <dd>string</dd>
+        <dd>プレースホルダー。<br>スペース区切りで実数部と小数部を指定する。</dd>
+      </app-data-list>
+    </div>
     <div class="validation">
       <ul>
         <li>整数部が整数でない場合エラー。</li>
@@ -21,10 +28,7 @@
       </ul>
     </div>
     <div>
-      <app-decimal-input [formControl]="control"></app-decimal-input>
-      <p>
-        {{value.toNumber()}}
-      </p>
+      <app-decimal-input [formControl]="control"/>
     </div>
     <div class="commands">
       <app-control-command-set [control]="control"></app-control-command-set>

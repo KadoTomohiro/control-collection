@@ -1,0 +1,9 @@
+<div class="button-case" [ngClass]="{disabled: disabled()}">
+  @for(option of list(); track option.value){
+    <div class="option"
+         (click)="onSelected(option.value)"
+         [ngClass]="{selected: isSelected(option.value), disabled: disabled()}">
+      {{option.label}}
+    </div>
+  }
+</div>

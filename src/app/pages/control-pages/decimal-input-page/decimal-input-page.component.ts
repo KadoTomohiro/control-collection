@@ -4,16 +4,18 @@ import {ControlPageTemplateComponent} from "@pages/control-pages/control-page-te
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
 import {Decimal, DecimalFormat} from '@models/decimal/decimal';
 import {ControlCommandSetComponent} from "@domain/control-command-set/control-command-set.component";
+import {DataListComponent} from "@parts/data-list/data-list.component";
 
 @Component({
   selector: 'app-decimal-input-page',
   standalone: true,
-    imports: [
-        ReactiveFormsModule,
-        DecimalInputComponent,
-        ControlPageTemplateComponent,
-        ControlCommandSetComponent
-    ],
+  imports: [
+    ReactiveFormsModule,
+    DecimalInputComponent,
+    ControlPageTemplateComponent,
+    ControlCommandSetComponent,
+    DataListComponent
+  ],
   templateUrl: './decimal-input-page.component.html',
   styleUrl: './decimal-input-page.component.css'
 })

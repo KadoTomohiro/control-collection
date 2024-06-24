@@ -1,4 +1,4 @@
-import {Component, computed, model, signal} from '@angular/core';
+import {Component, computed, input, model, signal} from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor, FormsModule,
@@ -29,6 +29,8 @@ import {decimalValidator} from "@controls/decimal-input/decimal-validator";
 export class DecimalInputComponent implements ControlValueAccessor, Validator{
   readonly value = model<DecimalFormat>(new Decimal({integer: 0, fraction: 0}));
   readonly #changeValue = computed(() => this.value(), {equal: Decimal.equal})
+  readonly placeholder = input<string>();
+  readonly placeholders = computed(() => this.#buildPlaceholders(this.placeholder()))
   #onChange = (_value: DecimalFormat) => {};
   #onTouch = () => {};
   readonly touched = signal<boolean>(false)
@@ -79,4 +81,11 @@ export class DecimalInputComponent implements ControlValueAccessor, Validator{
     this.#onChange(this.#changeValue())
   }
 
+  #buildPlaceholders(placeholder: string | undefined) {
+    if (!placeholder) {
+      return undefined
+    }
+    const [integer, fraction] = placeholder.split(/\s/);
+    return {integer, fraction};
+  }
 }
