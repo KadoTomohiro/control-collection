@@ -20,7 +20,12 @@
         <li>小数部が負の場合エラー</li>
       </ul>
     </div>
-    <app-decimal-input [formControl]="control"></app-decimal-input>
+    <div>
+      <app-decimal-input [formControl]="control"></app-decimal-input>
+      <p>
+        {{value.toNumber()}}
+      </p>
+    </div>
     <div class="commands">
       <app-control-command-set [control]="control"></app-control-command-set>
     </div>

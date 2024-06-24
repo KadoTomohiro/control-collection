@@ -16,4 +16,9 @@ export const controlRoutes: Routes = [
     loadComponent: () => import('@pages/control-pages/counter-page/counter-page.component')
       .then(m => m.CounterPageComponent)
   },
+  {
+    path: 'toggle-button',
+    loadComponent: () => import('@pages/control-pages/toggle-button-page/toggle-button-page.component')
+      .then(m => m.ToggleButtonPageComponent)
+  }
 ]

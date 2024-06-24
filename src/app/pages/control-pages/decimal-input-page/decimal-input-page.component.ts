@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {DecimalInputComponent} from "@controls/decimal-input/decimal-input.component";
 import {ControlPageTemplateComponent} from "@pages/control-pages/control-page-template/control-page-template.component";
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
-import { DecimalFormat} from "@models/decimal/decimal";
+import {Decimal, DecimalFormat} from '@models/decimal/decimal';
 import {ControlCommandSetComponent} from "@domain/control-command-set/control-command-set.component";
 
 @Component({
@@ -19,4 +19,9 @@ import {ControlCommandSetComponent} from "@domain/control-command-set/control-co
 })
 export class DecimalInputPageComponent {
   control = new FormControl<DecimalFormat>({integer: 0, fraction: 0})
+  protected readonly Decimal = Decimal;
+
+  get value(): Decimal {
+    return this.control.value as Decimal;
+  }
 }
