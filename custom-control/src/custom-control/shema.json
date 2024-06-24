@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "CustomControlSchematic",
+  "title": "ng generate custom-control schema",
+  "type": "object",
+  "description": "Generate a custom control",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the project",
+      "x-prompt": "Name:",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
+    }
+  }
+}
