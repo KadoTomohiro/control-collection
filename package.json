@@ -7,8 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "build:schima": "tsc -p tsconfig.schematics.json",
-    "postbuild:schima": "copyfiles schematics/*/schema.json schematics/*/files/** schematics/collection.json ../../dist/control-collection/"
+    "build:schema": "tsc -p tsconfig.schematics.json",
+    "postbuild:schema": "copyfiles ./schematics/**/package.json ./schematics/**/schema.json ./schematics/**/files/** ./schematics/**/collection.json ./dist/ -e './schematics/cusom-control/node_modules/**/*'"
   },
   "private": true,
   "dependencies": {
@@ -31,6 +31,7 @@
     "@angular/compiler-cli": "^18.0.0",
     "@types/jasmine": "~5.1.0",
     "angular-cli-ghpages": "^2.0.1",
+    "copyfiles": "^2.4.1",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",

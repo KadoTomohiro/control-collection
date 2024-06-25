@@ -1,31 +1,33 @@
-import {Component, model, signal} from '@angular/core';
+import {Component,  model, signal} from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
   NG_VALIDATORS,
   NG_VALUE_ACCESSOR,
-  Validator
+  ValidationErrors,
+  Validator, Validators
 } from "@angular/forms";
+import {defined} from "@utility/defined";
 import {toObservable} from "@angular/core/rxjs-interop";
 
 @Component({
-  selector: '<%= prefix %>-<%= dasherize(name) %>',
+  selector: 'app-controls/object-editor',
   standalone: true,
   imports: [],
   providers: [
-    { provide: NG_VALUE_ACCESSOR, useExisting: <%= classify(name) %>Component, multi: true },
-    { provide: NG_VALIDATORS, useExisting: <%= classify(name) %>Component, multi: true}
+    { provide: NG_VALUE_ACCESSOR, useExisting: ObjectEditorComponent, multi: true },
+    { provide: NG_VALIDATORS, useExisting: ObjectEditorComponent, multi: true}
   ],
-  templateUrl: './<%= dasherize(name) %>.component.html',
-  styleUrl: './<%= dasherize(name) %>.component.css'
+  templateUrl: './object-editor.component.html',
+  styleUrl: './object-editor.component.css'
 })
-export class <%= classify(name) %>Component implements ControlValueAccessor, Validator{
+export class ObjectEditorComponent implements ControlValueAccessor, Validator{
 
-  readonly value = model<<%= valueType %>>();
+  readonly value = model<Object>();
   readonly disabled = signal<boolean>(false);
   readonly touched = signal<boolean>(false)
 
-  #onChange = (_value: <%= valueType %>) => {};
+  #onChange = (_value: any) => {};
   #onTouched = () => {};
   #onValidatorChange = () => {};
 

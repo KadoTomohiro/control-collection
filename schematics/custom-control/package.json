@@ -1,10 +1,11 @@
 {
-  "name": "@kadotomohiro/custom-control-schematics",
+  "name": "pj-schematics",
   "version": "0.0.0",
   "description": "Angular custom control generator schematics",
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "test": "npm run build && jasmine src/**/*_spec.js"
+
   },
   "keywords": [
     "schematics"
@@ -18,8 +19,9 @@
     "typescript": "~5.4.2"
   },
   "devDependencies": {
-    "@types/node": "^18.18.0",
     "@types/jasmine": "~5.1.0",
+    "@types/node": "^18.18.0",
+    "copyfiles": "^2.4.1",
     "jasmine": "^5.0.0"
   }
 }

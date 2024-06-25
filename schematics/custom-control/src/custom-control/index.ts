@@ -1,18 +1,65 @@
-import { Rule, SchematicContext, Tree } from '@angular-devkit/schematics';
+import {
+  apply,
+  applyTemplates, chain, mergeWith, move,
+  Rule,
+  SchematicsException,
+  Tree, url,
+} from '@angular-devkit/schematics';
 
 import { Schema as CustomControlShema } from './schema';
+import {normalize, strings, virtualFs, workspaces} from '@angular-devkit/core';
 
-// generate function of custom-control
-export function generate(_options: any): Rule {
-  return (tree: Tree, _context: SchematicContext) => {
-    return tree;
+// create host function
+function createHost(tree: Tree): workspaces.WorkspaceHost {
+  return {
+    async readFile(path: string): Promise<string> {
+      const data = tree.read(path);
+      if (!data) {
+        throw new SchematicsException('File not found.');
+      }
+      return virtualFs.fileBufferToString(data);
+    },
+    async writeFile(path: string, data: string): Promise<void> {
+      return tree.overwrite(path, data);
+    },
+    async isDirectory(path: string): Promise<boolean> {
+      return !tree.exists(path) && tree.getDir(path).subfiles.length > 0;
+    },
+    async isFile(path: string): Promise<boolean> {
+      return tree.exists(path);
+    },
   };
 }
 
-// You don't have to export the function as default. You can also have more than one rule factory
-// per file.
-export function customControl(_options: any): Rule {
-  return (tree: Tree, _context: SchematicContext) => {
-    return tree;
+
+// generate function of custom-control
+export function customControl(options: CustomControlShema): Rule {
+  return async (tree: Tree) => {
+    const host = createHost(tree);
+    const {workspace} = await workspaces.readWorkspace('/', host);
+
+    const project = options.project != null ? workspace.projects.get(options.project) : null;
+    if (!project) {
+      throw new SchematicsException(`Invalid project name: ${options.project}`);
+    }
+    const projectType = project.extensions.projectType === 'application' ? 'app' : 'lib';
+    if (options.path === undefined) {
+      options.path = `${project.sourceRoot}/${projectType}`;
+    }
+    const prefix = project.prefix ?? 'app';
+    const valueType = options.valueType === 'array' ? '[]' :  options.valueType ?? 'any';
+
+    const templateSource = apply(url('./files'), [
+      applyTemplates({
+        classify: strings.classify,
+        dasherize: strings.dasherize,
+        name: options.name,
+        prefix,
+        valueType
+      }),
+      move(normalize(options.path as string)),
+    ]);
+
+    return chain([mergeWith(templateSource)]);
   };
 }

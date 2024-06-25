@@ -5,4 +5,5 @@ export interface Schema {
   path?: string;
   // The name of the project.
   project?: string;
+  valueType?: 'string' | 'number' | 'boolean' | 'object' | 'array' | 'any';
 }
