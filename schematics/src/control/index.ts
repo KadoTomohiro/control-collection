@@ -2,14 +2,16 @@ import {
   apply,
   applyTemplates, chain, mergeWith, move,
   Rule,
-  SchematicsException,
-  Tree, url,
+  SchematicsException, strings,
+  Tree,
+  url
 } from '@angular-devkit/schematics';
+import {normalize, virtualFs, workspaces} from "@angular-devkit/core";
 
-import { Schema as CustomControlShema } from './schema';
-import {normalize, strings, virtualFs, workspaces} from '@angular-devkit/core';
+import {Schema as ControlSchema} from './schema';
+import {parseName} from "./parseName";
 
-// create host function
+
 function createHost(tree: Tree): workspaces.WorkspaceHost {
   return {
     async readFile(path: string): Promise<string> {
@@ -32,12 +34,12 @@ function createHost(tree: Tree): workspaces.WorkspaceHost {
 }
 
 
-// generate function of custom-control
-export function customControl(options: CustomControlShema): Rule {
+// You don't have to export the function as default. You can also have more than one rule factory
+// per file.
+export function control(options: ControlSchema): Rule {
   return async (tree: Tree) => {
     const host = createHost(tree);
     const {workspace} = await workspaces.readWorkspace('/', host);
-
     const project = options.project != null ? workspace.projects.get(options.project) : null;
     if (!project) {
       throw new SchematicsException(`Invalid project name: ${options.project}`);
@@ -46,8 +48,12 @@ export function customControl(options: CustomControlShema): Rule {
     if (options.path === undefined) {
       options.path = `${project.sourceRoot}/${projectType}`;
     }
-    const prefix = project.prefix ?? 'app';
-    const valueType = options.valueType === 'array' ? '[]' :  options.valueType ?? 'any';
+
+    const parsedPath = parseName(options.path, options.name);
+    options.name = parsedPath.name;
+    options.path = parsedPath.path;
+
+    const prefix = project.prefix
 
     const templateSource = apply(url('./files'), [
       applyTemplates({
@@ -55,11 +61,9 @@ export function customControl(options: CustomControlShema): Rule {
         dasherize: strings.dasherize,
         name: options.name,
         prefix,
-        valueType
       }),
       move(normalize(options.path as string)),
     ]);
-
     return chain([mergeWith(templateSource)]);
   };
 }

@@ -7,19 +7,24 @@ export const controlRoutes: Routes = [
       .then(m => m.InputPageComponent),
   },
   {
-    path: 'decimal-input',
-    loadComponent: () => import('@pages/control-pages/decimal-input-page/decimal-input-page.component')
-      .then(m => m.DecimalInputPageComponent)
-  },
-  {
     path: 'counter',
     loadComponent: () => import('@pages/control-pages/counter-page/counter-page.component')
       .then(m => m.CounterPageComponent)
   },
   {
+    path: 'decimal-input',
+    loadComponent: () => import('@pages/control-pages/decimal-input-page/decimal-input-page.component')
+      .then(m => m.DecimalInputPageComponent)
+  },
+  {
     path: 'toggle-button',
     loadComponent: () => import('@pages/control-pages/toggle-button-page/toggle-button-page.component')
       .then(m => m.ToggleButtonPageComponent)
+  },
+  {
+    path: 'json-input',
+    loadComponent: () => import('@pages/control-pages/json-input-page/json-input-page.component')
+      .then(m => m.JsonInputPageComponent)
   },
   {
     path: 'toggle-switch',

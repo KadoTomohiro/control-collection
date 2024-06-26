@@ -1,0 +1,18 @@
+<app-control-page-template>
+  <div class="title">Json Input</div>
+  <div class="description">Jsonをパースする。</div>
+  <div class="type">
+    入力はJSON likeな<code>string</code>。<br>
+    valueはパースされたオブジェクト。パースできない場合はnull。
+  </div>
+  <div class="validation">
+    <ul>
+      <li>
+        Jsonパースできない場合エラー。
+      </li>
+    </ul>
+  </div>
+  <div>
+    <app-json-input [formControl]="control"/>
+  </div>
+</app-control-page-template>

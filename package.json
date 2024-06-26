@@ -7,8 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "build:schema": "tsc -p tsconfig.schematics.json",
-    "postbuild:schema": "copyfiles ./schematics/**/package.json ./schematics/**/schema.json ./schematics/**/files/** ./schematics/**/collection.json ./dist/ -e './schematics/cusom-control/node_modules/**/*'"
+    "build:schema": "cd schematics && npm run build",
+    "postbuild:schema": "cd dist/schematics && npm link && cd ../../ && npm link ccs"
   },
   "private": true,
   "dependencies": {

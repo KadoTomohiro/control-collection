@@ -1,18 +1,21 @@
 {
-  "name": "pj-schematics",
-  "version": "0.0.0",
+  "name": "ccs",
+  "version": "0.0.5",
   "description": "Angular custom control generator schematics",
   "scripts": {
-    "build": "tsc -p tsconfig.json",
+    "build": "npm run clean && npm run compile && npm run copy-files && npm run copy-packagejson",
+    "clean": "rimraf dist/schematics",
+    "compile": "tsc -p tsconfig.json",
+    "copy-files": "copyfiles -u 1 src/collection.json src/**/*.json src/**/files/**/* ../dist/schematics",
+    "copy-packagejson": "copyfiles package.json ../dist/schematics",
     "test": "npm run build && jasmine src/**/*_spec.js"
-
   },
   "keywords": [
     "schematics"
   ],
   "author": "KadoTomohiro",
   "license": "MIT",
-  "schematics": "./src/collection.json",
+  "schematics": "./collection.json",
   "dependencies": {
     "@angular-devkit/core": "^18.0.5",
     "@angular-devkit/schematics": "^18.0.5",
@@ -22,6 +25,7 @@
     "@types/jasmine": "~5.1.0",
     "@types/node": "^18.18.0",
     "copyfiles": "^2.4.1",
-    "jasmine": "^5.0.0"
+    "jasmine": "^5.0.0",
+    "rimraf": "^5.0.7"
   }
 }
