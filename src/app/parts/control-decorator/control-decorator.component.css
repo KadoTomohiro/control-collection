@@ -1,0 +1,4 @@
+.app-control-decorator-has-error * {
+  color: #ff6969;
+  border-color: #ff6969;
+}
