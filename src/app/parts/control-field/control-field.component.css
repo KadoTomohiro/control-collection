@@ -1,0 +1,8 @@
+:host {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.error {
+  color: #ff6969;
+}

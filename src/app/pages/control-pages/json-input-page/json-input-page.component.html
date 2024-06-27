@@ -1,6 +1,9 @@
 <app-control-page-template>
   <div class="title">Json Input</div>
   <div class="description">Jsonをパースする。</div>
+  <div class="alert" #alert>
+    入力中に整形が消される。
+  </div>
   <div class="type">
     入力はJSON likeな<code>string</code>。<br>
     valueはパースされたオブジェクト。パースできない場合はnull。

@@ -5,6 +5,7 @@ import {FormControl, ReactiveFormsModule} from "@angular/forms";
 import {Decimal, DecimalFormat} from '@models/decimal/decimal';
 import {ControlCommandSetComponent} from "@domain/control-command-set/control-command-set.component";
 import {DataListComponent} from "@parts/data-list/data-list.component";
+import {ControlFieldComponent} from "@parts/control-field/control-field.component";
 
 @Component({
   selector: 'app-decimal-input-page',
@@ -14,14 +15,14 @@ import {DataListComponent} from "@parts/data-list/data-list.component";
     DecimalInputComponent,
     ControlPageTemplateComponent,
     ControlCommandSetComponent,
-    DataListComponent
+    DataListComponent,
+    ControlFieldComponent
   ],
   templateUrl: './decimal-input-page.component.html',
   styleUrl: './decimal-input-page.component.css'
 })
 export class DecimalInputPageComponent {
   control = new FormControl<DecimalFormat>({integer: 0, fraction: 0})
-  protected readonly Decimal = Decimal;
 
   get value(): Decimal {
     return this.control.value as Decimal;

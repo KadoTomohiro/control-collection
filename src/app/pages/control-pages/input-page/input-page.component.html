@@ -4,5 +4,7 @@
   <div class="type">
     <code>string</code>
   </div>
-  <input [formControl]="control" />
+  <app-control-field [label]="'text'">
+    <input [formControl]="control" />
+  </app-control-field>
 </app-control-page-template>

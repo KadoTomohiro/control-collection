@@ -28,7 +28,9 @@
       </ul>
     </div>
     <div>
-      <app-decimal-input [formControl]="control"/>
+      <app-control-field label="実数入力">
+        <app-decimal-input [formControl]="control"/>
+      </app-control-field>
     </div>
     <div class="commands">
       <app-control-command-set [control]="control"></app-control-command-set>

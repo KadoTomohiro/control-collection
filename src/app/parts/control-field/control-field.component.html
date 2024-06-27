@@ -1,0 +1,9 @@
+<label appLabel [ngClass]="{error: hasError}">
+  {{label()}}
+</label>
+<app-control-decorator [hasError]="hasError">
+  <ng-content></ng-content>
+</app-control-decorator>
+@for (message of messages();let i = $index; track i) {
+  <span appLabel class="error">{{message}}</span>
+}
