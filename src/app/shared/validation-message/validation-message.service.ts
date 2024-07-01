@@ -21,27 +21,10 @@ export class ValidationMessageService {
     const entries = Object.entries(validationError)
     return entries.map(([validationName, error]) => {
       const messageTemplate = this.#messages[validationName];
-      return this.#formatMessage(messageTemplate, error);
+      return messageTemplate(error)
     })
   }
 
   #mergeMessages = (pre: ValidationMessage, curr: ValidationMessage) => Object.assign<ValidationMessage, ValidationMessage>(pre, curr);
 
-  #formatMessage(template: string, error: any): string {
-    if(typeof error  == 'object') {
-      const templateKeyPattern = new RegExp(/{{([^{}]+)}}/, 'g')
-      const templateKeys: string[] = []
-      let result:  RegExpExecArray | null;
-      while ((result = templateKeyPattern.exec(template)) !== null) {
-        const [_, templateKey] = result;
-        templateKeys.push(templateKey);
-      }
-
-      templateKeys.forEach(templateKey => {
-        template = template.replace(`{{${templateKey}}}`, error[templateKey]);
-      })
-    }
-    return template;
-
-  }
 }

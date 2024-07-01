@@ -1,8 +1,6 @@
 import {Component, input} from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 
-type ValueType = 'string' | 'number' | 'boolean' | 'object' | 'array';
-
 @Component({
   selector: 'app-control-command-set',
   standalone: true,
@@ -14,7 +12,7 @@ type ValueType = 'string' | 'number' | 'boolean' | 'object' | 'array';
 })
 export class ControlCommandSetComponent {
   control = input.required<FormControl>()
-  valueType = input.required<ValueType>()
+  // valueType = input.required<ValueType>()
   readonly disableOption = new FormGroup({
     opts:new FormGroup( {
       onlySelf: new FormControl<boolean>(false, {nonNullable: true}),

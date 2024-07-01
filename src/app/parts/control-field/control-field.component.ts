@@ -31,6 +31,10 @@ export class ControlFieldComponent implements AfterContentInit {
     return (this.controlRef?.touched && this.controlRef?.invalid) ?? false;
   }
 
+  get loading(): boolean {
+    return this.controlRef?.pending ?? false;
+  }
+
   ngAfterContentInit(): void {
     this.controlRef.control?.events.subscribe(() => {
       const errors = this.controlRef.errors

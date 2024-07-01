@@ -2,12 +2,13 @@ import {Component, model, signal} from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
+  FormsModule,
   NG_VALIDATORS,
   NG_VALUE_ACCESSOR,
-  Validator,
-  ValidationErrors, FormsModule
+  ValidationErrors,
+  Validator
 } from "@angular/forms";
-import { toObservable } from "@angular/core/rxjs-interop";
+import {toObservable} from "@angular/core/rxjs-interop";
 
 @Component({
   selector: 'app-json-input',
@@ -24,7 +25,7 @@ import { toObservable } from "@angular/core/rxjs-interop";
 })
 export class JsonInputComponent implements ControlValueAccessor, Validator{
 
-  readonly value = model<Object | null>({});
+  readonly value = model<Object | null>(null);
   readonly stringifyValue = signal<string>('');
   readonly disabled = signal<boolean>(false);
   readonly #touched = signal<boolean>(false);
@@ -73,8 +74,6 @@ export class JsonInputComponent implements ControlValueAccessor, Validator{
     this.#markAsDirty()
     const json = this.#toJson(input);
     this.value.set(json);
-
-
   }
 
   #markAsDirty() {
@@ -96,6 +95,6 @@ export class JsonInputComponent implements ControlValueAccessor, Validator{
   }
 
   #stringify(json: any) {
-    return JSON.stringify(json);
+    return JSON.stringify(json)
   }
 }

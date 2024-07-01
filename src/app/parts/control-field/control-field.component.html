@@ -4,6 +4,14 @@
 <app-control-decorator [hasError]="hasError">
   <ng-content></ng-content>
 </app-control-decorator>
+@if (loading) {
+  <div class="loader">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+}
 @for (message of messages();let i = $index; track i) {
   <span appLabel class="error">{{message}}</span>
 }
+
