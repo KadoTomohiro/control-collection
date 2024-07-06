@@ -21,7 +21,7 @@ export class ValidationMessageService {
     const entries = Object.entries(validationError)
     return entries.map(([validationName, error]) => {
       const messageTemplate = this.#messages[validationName];
-      return messageTemplate(error)
+      return typeof messageTemplate === "string" ? messageTemplate : messageTemplate(error)
     })
   }
 

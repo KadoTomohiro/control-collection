@@ -9,6 +9,9 @@ import {
   Validator
 } from "@angular/forms";
 import {toObservable} from "@angular/core/rxjs-interop";
+import fmt2json from "format-to-json";
+
+export type JsonSyntaxErrorType = true
 
 @Component({
   selector: 'app-json-input',
@@ -33,7 +36,6 @@ export class JsonInputComponent implements ControlValueAccessor, Validator{
 
   #onChange = (_value: Object | null) => {};
   #onTouched = () => {};
-  #onValidatorChange = () => {};
 
   constructor() {
     toObservable(this.value).subscribe(() => {
@@ -52,10 +54,6 @@ export class JsonInputComponent implements ControlValueAccessor, Validator{
     this.#onTouched = fn;
   }
 
-  registerOnValidatorChange(fn: () => void): void {
-    this.#onValidatorChange = fn;
-  }
-
   setDisabledState(isDisabled: boolean): void {
     this.disabled.set(isDisabled);
   }
@@ -66,7 +64,7 @@ export class JsonInputComponent implements ControlValueAccessor, Validator{
 
   validate(control: AbstractControl): ValidationErrors | null {
     if (!control) return null;
-    return this.#isParsable() ? null : {jsonSyntax: false}
+    return this.#isParsable() ? null : {jsonSyntax: true}
   }
 
   onChange(input: string) {
@@ -84,8 +82,10 @@ export class JsonInputComponent implements ControlValueAccessor, Validator{
   }
 
   #toJson(value: string) {
+    console.log(value)
     try {
       const json = JSON.parse(value);
+
       this.#isParsable.set(true);
       return json;
     } catch {
@@ -94,7 +94,7 @@ export class JsonInputComponent implements ControlValueAccessor, Validator{
     }
   }
 
-  #stringify(json: any) {
-    return JSON.stringify(json)
+  #stringify(json: any): string {
+    return fmt2json(JSON.stringify(json))
   }
 }
