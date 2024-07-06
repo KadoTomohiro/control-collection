@@ -42,7 +42,6 @@ export class JsonInputComponent implements ControlValueAccessor, Validator{
       if (this.#isParsable()) {
         this.stringifyValue.set(this.#stringify(this.value()))
       }
-      this.#onChange(this.value())
     });
   }
 
@@ -67,11 +66,12 @@ export class JsonInputComponent implements ControlValueAccessor, Validator{
     return this.#isParsable() ? null : {jsonSyntax: true}
   }
 
-  onChange(input: string) {
+  onModelChange(input: string) {
     if (this.disabled()) return
     this.#markAsDirty()
     const json = this.#toJson(input);
     this.value.set(json);
+    this.#onChange(this.value())
   }
 
   #markAsDirty() {

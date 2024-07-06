@@ -9,6 +9,4 @@ import {ControlListPageComponent} from "@pages/control-list-page/control-list-pa
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
-  title = 'control-collection';
-}
+export class AppComponent {}

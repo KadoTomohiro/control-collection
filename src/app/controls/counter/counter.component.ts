@@ -38,7 +38,7 @@ export class CounterComponent implements ControlValueAccessor, Validator{
   constructor() {
     toObservable(this.min).subscribe(this.#onValidatorChange);
     toObservable(this.max).subscribe(this.#onValidatorChange);
-    toObservable(this.value).subscribe(() => this.#onChange(this.value()));
+    // this.value.subscribe(() => this.#onModelChange(this.value()));
   }
 
   registerOnChange(fn: any): void {
@@ -69,6 +69,7 @@ export class CounterComponent implements ControlValueAccessor, Validator{
 
     if (this.disabled()) return;
     this.value.update(v => v + this.increment())
+    this.#onChange(this.value())
   }
 
   onReduce() {
@@ -79,6 +80,7 @@ export class CounterComponent implements ControlValueAccessor, Validator{
     if (defined<number>(min) && this.value() <= min) return;
 
     this.value.update(v => v - this.increment());
+    this.#onChange(this.value())
   }
 
   markAsDirty() {

@@ -37,7 +37,7 @@ export class ToggleButtonComponent implements ControlValueAccessor, Validator{
 
   constructor() {
     toObservable(this.list).subscribe(this.#onValidatorChange)
-    toObservable(this.value).subscribe(() => this.#onChange(this.value()))
+    // toObservable(this.value).subscribe(() => )
   }
 
   registerOnChange(fn: any): void {
@@ -79,6 +79,7 @@ export class ToggleButtonComponent implements ControlValueAccessor, Validator{
     if (this.disabled()) return;
     this.markAsDirty()
     this.value.set(value);
+    this.#onChange(this.value())
   }
 
   markAsDirty() {
