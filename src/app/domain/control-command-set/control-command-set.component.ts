@@ -1,5 +1,5 @@
 import {Component, input} from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-control-command-set',
@@ -14,7 +14,7 @@ export class ControlCommandSetComponent {
   control = input.required<FormControl>()
   // valueType = input.required<ValueType>()
   readonly disableOption = new FormGroup({
-    opts:new FormGroup( {
+    opts: new FormGroup( {
       onlySelf: new FormControl<boolean>(false, {nonNullable: true}),
       emitEvent: new FormControl<boolean>(true, {nonNullable: true}),
     })
@@ -61,6 +61,8 @@ export class ControlCommandSetComponent {
     options: new FormGroup({
       onlySelf: new FormControl<boolean>(false, {nonNullable: true}),
       emitEvent: new FormControl<boolean>(true, {nonNullable: true}),
+      emitModelToViewChange: new FormControl<boolean>(true, {nonNullable: true}),
+      emitViewToModelChange: new FormControl<boolean>(true, {nonNullable: true}),
     })
   })
   readonly patchValueOption = new FormGroup({
@@ -68,6 +70,8 @@ export class ControlCommandSetComponent {
     options: new FormGroup({
       onlySelf: new FormControl<boolean>(false, {nonNullable: true}),
       emitEvent: new FormControl<boolean>(true, {nonNullable: true}),
+      emitModelToViewChange: new FormControl<boolean>(true, {nonNullable: true}),
+      emitViewToModelChange: new FormControl<boolean>(true, {nonNullable: true}),
     })
   })
   readonly resetOption = new FormGroup({
@@ -80,6 +84,18 @@ export class ControlCommandSetComponent {
   readonly updateValueAndValidityOption = new FormGroup({
     opts:new FormGroup( {
       onlySelf: new FormControl<boolean>(false, {nonNullable: true}),
+      emitEvent: new FormControl<boolean>(true, {nonNullable: true}),
+    })
+  })
+
+  readonly markAllAsTouchedOption = new FormGroup({
+    opts: new FormGroup({
+      emitEvent: new FormControl<boolean>(true, {nonNullable: true}),
+    })
+  })
+  readonly setErrorOption = new FormGroup({
+    validationErrors: new FormControl(),
+    opts: new FormGroup({
       emitEvent: new FormControl<boolean>(true, {nonNullable: true}),
     })
   })
@@ -106,16 +122,33 @@ export class ControlCommandSetComponent {
     this.control().markAsPending(this.markAsPendingOption.value.opts);
   }
   onSetValue() {
-    this.control().setValue(this.setValueOption.value.value, this.setValueOption.value.options);
+    this.control().setValue(
+      this.setValueOption.value.value,
+      this.setValueOption.value.options
+    );
   }
   onPatchValue() {
-    this.control().patchValue(this.patchValueOption.value.value, this.patchValueOption.value.options);
+    this.control().patchValue(
+      this.patchValueOption.value.value,
+      this.patchValueOption.value.options
+    );
   }
   onReset() {
-    this.control().reset(this.resetOption.value.value, this.resetOption.value.options);
+    this.control().reset(
+      this.resetOption.value.value,
+      this.resetOption.value.options
+    );
   }
   onUpdateValueAndValidity() {
     this.control().updateValueAndValidity(this.updateValueAndValidityOption.value.opts);
   }
-
+  onMarkAllAsTouched() {
+    this.control().markAllAsTouched(this.markAllAsTouchedOption.value.opts);
+  }
+  onSetError() {
+    this.control().setErrors(
+      this.setErrorOption.value.validationErrors,
+      this.setErrorOption.value.opts
+    )
+  }
 }

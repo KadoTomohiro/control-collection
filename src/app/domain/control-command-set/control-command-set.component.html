@@ -1,8 +1,152 @@
+<div [formGroup]="disableOption">
   <button (click)="onDisable()">disable</button>
+  <div formGroupName="opts">
+    <label>
+      <input type="checkbox" formControlName="onlySelf">onlySelf
+    </label>
+    <label>
+      <input type="checkbox" formControlName="emitEvent">emitEvent
+    </label>
+  </div>
+</div>
+<div [formGroup]="enableOption">
   <button (click)="onEnable()">enable</button>
+  <div formGroupName="opts">
+    <label>
+      <input type="checkbox" formControlName="onlySelf">onlySelf
+    </label>
+    <label>
+      <input type="checkbox" formControlName="emitEvent">emitEvent
+    </label>
+  </div>
+</div>
+<div [formGroup]="markAsTouchedOption">
   <button (click)="onMarkAsTouched()">markAsTouched</button>
+  <div formGroupName="opts">
+    <label>
+      <input type="checkbox" formControlName="onlySelf">onlySelf
+    </label>
+    <label>
+      <input type="checkbox" formControlName="emitEvent">emitEvent
+    </label>
+  </div>
+</div>
+<div [formGroup]="markAsUntouchedOption">
   <button (click)="onMarkAsUntouched()">markAsUntouched</button>
+  <div formGroupName="opts">
+    <label>
+      <input type="checkbox" formControlName="onlySelf">onlySelf
+    </label>
+    <label>
+      <input type="checkbox" formControlName="emitEvent">emitEvent
+    </label>
+  </div>
+</div>
+<div [formGroup]="markAsDirtyOption">
   <button (click)="onMarkAsDirty()">markAsDirty</button>
+  <div formGroupName="opts">
+    <label>
+      <input type="checkbox" formControlName="onlySelf">onlySelf
+    </label>
+    <label>
+      <input type="checkbox" formControlName="emitEvent">emitEvent
+    </label>
+  </div>
+</div>
+<div [formGroup]="markAsPristineOption">
   <button (click)="onMarkAsPristine()">markAsPristine</button>
+  <div formGroupName="opts">
+    <label>
+      <input type="checkbox" formControlName="onlySelf">onlySelf
+    </label>
+    <label>
+      <input type="checkbox" formControlName="emitEvent">emitEvent
+    </label>
+  </div>
+</div>
+<div [formGroup]="markAsPendingOption">
   <button (click)="onMarkAsPending()">markAsPending</button>
-  <button (click)="onReset()">resetValue</button>
+  <div formGroupName="opts">
+    <label>
+      <input type="checkbox" formControlName="onlySelf">onlySelf
+    </label>
+    <label>
+      <input type="checkbox" formControlName="emitEvent">emitEvent
+    </label>
+  </div>
+</div>
+<div [formGroup]="setValueOption">
+  <button (click)="onSetValue()">setValue</button>
+  <input type="text" formControlName="value">
+  <div formGroupName="options">
+    <label>
+      <input type="checkbox" formControlName="onlySelf">onlySelf
+    </label>
+    <label>
+      <input type="checkbox" formControlName="emitEvent">emitEvent
+    </label>
+    <label>
+      <input type="checkbox" formControlName="emitModelToViewChange">emitModelToViewChange
+    </label>
+    <label>
+      <input type="checkbox" formControlName="emitViewToModelChange">emitViewToModelChange
+    </label>
+  </div>
+</div>
+<div [formGroup]="patchValueOption">
+  <button (click)="onPatchValue()">patchValue</button>
+  <input type="text" formControlName="value">
+  <div formGroupName="options">
+    <label>
+      <input type="checkbox" formControlName="onlySelf">onlySelf
+    </label>
+    <label>
+      <input type="checkbox" formControlName="emitEvent">emitEvent
+    </label>
+    <label>
+      <input type="checkbox" formControlName="emitModelToViewChange">emitModelToViewChange
+    </label>
+    <label>
+      <input type="checkbox" formControlName="emitViewToModelChange">emitViewToModelChange
+    </label>
+  </div>
+</div>
+<div [formGroup]="resetOption">
+  <button (click)="onReset()">reset</button>
+  <input type="text" formControlName="value">
+  <div formGroupName="options">
+    <label>
+      <input type="checkbox" formControlName="onlySelf">onlySelf
+    </label>
+    <label>
+      <input type="checkbox" formControlName="emitEvent">emitEvent
+    </label>
+  </div>
+</div>
+<div [formGroup]="updateValueAndValidityOption">
+  <button (click)="onUpdateValueAndValidity()">updateValueAndValidity</button>
+  <div formGroupName="opts">
+    <label>
+      <input type="checkbox" formControlName="onlySelf">onlySelf
+    </label>
+    <label>
+      <input type="checkbox" formControlName="emitEvent">emitEvent
+    </label>
+  </div>
+</div>
+<div [formGroup]="markAllAsTouchedOption">
+  <button (click)="onMarkAllAsTouched()">markAllAsTouched</button>
+  <div formGroupName="opts">
+    <label>
+      <input type="checkbox" formControlName="emitEvent">emitEvent
+    </label>
+  </div>
+</div>
+<div [formGroup]="setErrorOption">
+  <button (click)="onSetError()">setError</button>
+  <div formGroupName="opts">
+    <label>
+      <input type="checkbox" formControlName="emitEvent">emitEvent
+    </label>
+  </div>
+</div>
