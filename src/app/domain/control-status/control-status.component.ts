@@ -1,6 +1,6 @@
 import {Component, input} from '@angular/core';
 import {JsonPipe} from "@angular/common";
-import {AbstractControl} from "@angular/forms";
+import { FormControl} from "@angular/forms";
 import {LabelComponent} from "@parts/label/label.component";
 
 @Component({
@@ -14,5 +14,5 @@ import {LabelComponent} from "@parts/label/label.component";
   styleUrl: './control-status.component.css'
 })
 export class ControlStatusComponent {
-  control = input.required<AbstractControl>();
+  control = input.required< FormControl >();
 }

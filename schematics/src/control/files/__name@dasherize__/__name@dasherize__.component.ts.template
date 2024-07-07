@@ -30,10 +30,6 @@ export class <%= classify(name) %>Component implements ControlValueAccessor, Val
   #onTouched = () => {};
   #onValidatorChange = () => {};
 
-  constructor() {
-    toObservable(this.value).subscribe(() => this.#onChange(this.value()));
-  }
-
   registerOnChange(fn: any): void {
     this.#onChange = fn;
   }
@@ -62,9 +58,9 @@ export class <%= classify(name) %>Component implements ControlValueAccessor, Val
   }
 
   #markAsDirty() {
-      if (!this.touched()) {
+      if (!this.#touched()) {
         this.#onTouched();
-        this.touched.set(true);
+        this.#touched.set(true);
       }
     }
 }

@@ -1,0 +1,34 @@
+@switch (type()) {
+  @case ('string') {
+    <input type="text"
+           [ngModel]="value()"
+           [disabled]="disabled()"
+           (ngModelChange)="onChange($event)"
+           (blur)="onBluer()"
+    >
+  }
+  @case ('number') {
+    <input type="number"
+           [ngModel]="value()"
+           [disabled]="disabled()"
+           (ngModelChange)="onChange($event)"
+           (blur)="onBluer()"
+    >
+  }
+  @case ('boolean') {
+    <input type="text"
+           [ngModel]="value()"
+           [disabled]="disabled()"
+           (ngModelChange)="onChange($event)"
+           (blur)="onBluer()"
+           (click)="onCheckBoxClick()">
+  }
+  @case ('object') {
+    <app-json-input
+      [ngModel]="value()"
+      [disabled]="disabled()"
+      (ngModelChange)="onChange($event)"
+      (blur)="onBluer()"
+    />
+  }
+}

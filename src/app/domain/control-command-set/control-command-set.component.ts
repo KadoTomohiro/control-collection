@@ -1,18 +1,20 @@
 import {Component, input} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
+import {TypedInputComponent, ValueType} from "@controls/typed-input/typed-input.component";
 
 @Component({
   selector: 'app-control-command-set',
   standalone: true,
   imports: [
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TypedInputComponent
   ],
   templateUrl: './control-command-set.component.html',
   styleUrl: './control-command-set.component.css'
 })
 export class ControlCommandSetComponent {
   control = input.required<FormControl>()
-  // valueType = input.required<ValueType>()
+  valueType = input.required<ValueType>()
   readonly disableOption = new FormGroup({
     opts: new FormGroup( {
       onlySelf: new FormControl<boolean>(false, {nonNullable: true}),

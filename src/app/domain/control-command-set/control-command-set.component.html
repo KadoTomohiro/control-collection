@@ -77,7 +77,7 @@
 </div>
 <div [formGroup]="setValueOption">
   <button (click)="onSetValue()">setValue</button>
-  <input type="text" formControlName="value">
+  <app-typed-input [type]="valueType()" formControlName="value" />
   <div formGroupName="options">
     <label>
       <input type="checkbox" formControlName="onlySelf">onlySelf
@@ -95,7 +95,7 @@
 </div>
 <div [formGroup]="patchValueOption">
   <button (click)="onPatchValue()">patchValue</button>
-  <input type="text" formControlName="value">
+  <app-typed-input [type]="valueType()" formControlName="value" />
   <div formGroupName="options">
     <label>
       <input type="checkbox" formControlName="onlySelf">onlySelf
@@ -113,7 +113,7 @@
 </div>
 <div [formGroup]="resetOption">
   <button (click)="onReset()">reset</button>
-  <input type="text" formControlName="value">
+  <app-typed-input [type]="valueType()" formControlName="value" />
   <div formGroupName="options">
     <label>
       <input type="checkbox" formControlName="onlySelf">onlySelf
