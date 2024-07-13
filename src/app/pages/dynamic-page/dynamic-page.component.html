@@ -1,0 +1,10 @@
+
+<ng-container
+  *ngComponentOutlet="
+  currentComponentInfo.component;
+  inputs: currentComponentInfo.inputs;
+  "
+ >
+</ng-container>
+
+<app-control-status [control]="inputs?.formControl"></app-control-status>

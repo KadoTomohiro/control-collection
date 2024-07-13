@@ -1,6 +1,6 @@
-import {Component, input} from '@angular/core';
+import {Component, computed, input} from '@angular/core';
 import {JsonPipe} from "@angular/common";
-import { FormControl} from "@angular/forms";
+import {AbstractControl, FormControl, isFormControl} from "@angular/forms";
 import {LabelComponent} from "@parts/label/label.component";
 
 @Component({
@@ -14,5 +14,10 @@ import {LabelComponent} from "@parts/label/label.component";
   styleUrl: './control-status.component.css'
 })
 export class ControlStatusComponent {
-  control = input.required< FormControl >();
+  control = input<AbstractControl>();
+
+  isFormControl = computed(() => isFormControl(this.control()))
+
+  asFormControl = computed(() => this.control() as FormControl);
+
 }

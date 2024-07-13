@@ -2,13 +2,15 @@
   {{label()}}
 </label>
 <app-control-decorator [hasError]="hasError">
-  <ng-content></ng-content>
+  @if (readonly()) {
+    {{ controlRef.value }}
+  } @else {
+    <ng-content></ng-content>
+  }
 </app-control-decorator>
 @if (loading) {
   <div class="loader">
-    <div></div>
-    <div></div>
-    <div></div>
+    <span></span><span></span><span></span>
   </div>
 }
 @for (message of messages();let i = $index; track i) {

@@ -1,9 +1,10 @@
 import {AfterContentInit, Component, ContentChild, inject, input, signal} from '@angular/core';
 import {LabelComponent} from "@parts/label/label.component";
-import {NgControl} from "@angular/forms";
+import {NgControl, ReactiveFormsModule} from "@angular/forms";
 import {ControlDecoratorComponent} from "@parts/control-decorator/control-decorator.component";
 import {NgClass} from "@angular/common";
 import {ValidationMessageService} from "../../shared/validation-message/validation-message.service";
+import {ReadOnlyComponent} from "@controls/read-only/read-only.component";
 
 @Component({
   selector: 'app-control-field',
@@ -11,13 +12,16 @@ import {ValidationMessageService} from "../../shared/validation-message/validati
   imports: [
     LabelComponent,
     ControlDecoratorComponent,
-    NgClass
+    NgClass,
+    ReadOnlyComponent,
+    ReactiveFormsModule
   ],
   templateUrl: './control-field.component.html',
   styleUrl: './control-field.component.css'
 })
 export class ControlFieldComponent implements AfterContentInit {
   readonly label = input('');
+  readonly readonly = input(false);
   messages = signal<string[]>([])
   messageService: ValidationMessageService
 

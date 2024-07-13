@@ -3,3 +3,25 @@
 </header>
 
 このカタログの目的とかなんか書く
+
+<form [formGroup]="form">
+  <input type="text" formControlName="text">
+  <app-control-field [readonly]="true">
+    <app-decimal-input formControlName="decimal"></app-decimal-input>
+  </app-control-field>
+</form>
+<button (click)="onClick()">markAsAll</button>
+<div class="status-container">
+  <div>
+    <span appLabel>Form</span>
+    <app-control-status [control]="form"></app-control-status>
+  </div>
+  <div>
+    <span appLabel>Form.Text</span>
+    <app-control-status [control]="textControl"></app-control-status>
+  </div>
+  <div>
+    <span appLabel>Form.Decimal</span>
+    <app-control-status [control]="decimalControl"></app-control-status>
+  </div>
+</div>
