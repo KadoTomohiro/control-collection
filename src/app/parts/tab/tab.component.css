@@ -1,0 +1,20 @@
+ul {
+  list-style: none;
+  display: flex;
+  box-shadow: #555 0 1px 1px;
+
+}
+
+a {
+  display: inline-block;
+  box-shadow: #555 0 0 1px;
+  padding: 0.5rem 0.7rem;
+  border-radius: 3px 3px 0 0 ;
+  text-decoration: none;
+  color: #000000;
+}
+
+a.active {
+  background-color: #777;
+  color: #ffffff;
+}

@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import {controlRoutes} from "../../controls.routes";
+import {inject, Injectable} from '@angular/core';
 import * as changeCase from "change-case";
+import {ControlDemoService} from "@domain/control-document/control-demo.service";
 
 export type ControlPageList = {
   path: string,
@@ -10,14 +10,19 @@ export type ControlPageList = {
 @Injectable()
 export class ControlListPageService {
 
-  constructor() { }
+  #controlDemoService: ControlDemoService
+
+  constructor() {
+    this.#controlDemoService = inject(ControlDemoService);
+  }
 
   getPageList(): ControlPageList{
-    return controlRoutes
-      .map(route => {
-        const path = route.path || '';
-        return {path, label: changeCase.capitalCase(path)}
+    return this.#controlDemoService.controlNames()
+      .map(name => {
+        const path = name;
+        return {path, label: changeCase.capitalCase(name)}
       })
       .filter(controlPage => !!controlPage.path)
+      .sort()
   }
 }

@@ -1,0 +1,7 @@
+
+@for (demo of currentControlDemoList; track $index) {
+  <section class="demo">
+    <h2>{{demo.title}}</h2>
+    <ng-container *ngComponentOutlet="demo.component"></ng-container>
+  </section>
+}

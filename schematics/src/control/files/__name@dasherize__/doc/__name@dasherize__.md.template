@@ -1,0 +1,33 @@
+## Description
+
+## Value Type
+
+## Inputs
+
+| Name | Type     | Description |
+|------|----------|-------------|
+
+## Outputs
+
+## Original Validation
+
+| Error | Validation Error Type                   | Description        |
+|-------|-----------------------------------------|--------------------|
+
+
+## Exception
+
+
+## Usage
+
+Reactive Formsのコントロールとして使用する。
+
+```html
+<app-<%= dasherize(name) %> [FormControl]="control"></app-<%= dasherize(name) %>>
+```
+
+```typescript
+class ExampleComponent {
+  control = new FormControl<number>()
+}
+```

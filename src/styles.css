@@ -13,6 +13,10 @@ input, select, textarea, button, .control-outline {
   font-size: 1rem;
 }
 
+input[type=number] {
+  text-align: right;
+}
+
 button {
   min-width: 2.15rem;
   background-color: #555555;
@@ -32,3 +36,26 @@ button:disabled {
   background-color: #cccccc;
   color: #555555;
 }
+
+markdown {
+  table {
+    border-spacing: 0;
+  }
+
+  th, tr, td {
+    padding: 0.3rem;
+    box-shadow: #777777 0 0 1px;
+  }
+
+  code {
+    background-color: #eee;
+    padding: 0.2rem;
+    border-radius: 2px;
+  }
+
+}
+h2 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+

@@ -1,0 +1,12 @@
+<ul>
+  @for (tab of tabs(); track $index){
+      <li>
+        <a
+          [routerLink]="tab.path"
+          [routerLinkActive]="'active'"
+          [routerLinkActiveOptions]="{ exact: true }">
+          {{tab.label}}
+        </a>
+      </li>
+  }
+</ul>

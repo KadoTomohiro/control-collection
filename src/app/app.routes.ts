@@ -1,5 +1,4 @@
 import {Routes} from '@angular/router';
-import {controlRoutes} from "./controls.routes";
 
 export const routes: Routes = [
   {
@@ -8,17 +7,14 @@ export const routes: Routes = [
       .then(m => m.TopPageComponent)
   },
   {
-    path: 'dynamic/:control',
-    loadComponent: () => import('./pages/dynamic-page/dynamic-page.component')
-      .then(m => m.DynamicPageComponent),
+    path: 'controls/:control',
+    loadComponent: () => import('@pages/control-page/control-page.component')
+      .then(m => m.ControlPageComponent),
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('@pages/control-page/control-page-route').then(m => m.controlPageRoute)
+      }
+    ]
   },
-  {
-    path: 'controls',
-    children: controlRoutes
-  },
-  {
-    path: 'controls/usage-guide',
-    loadComponent: () => import('./pages/control-pages/usage-guide-page/usage-guide-page.component')
-      .then(m => m.UsageGuidePageComponent)
-  }
 ];
