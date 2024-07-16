@@ -1,2 +1,7 @@
-<textarea [ngModel]="stringifyValue()" (ngModelChange)="onModelChange($event)" [disabled]="disabled()">
+<textarea
+  [ngModel]="stringifyValue()"
+  (ngModelChange)="onModelChange($event)"
+  [disabled]="disabled()"
+  [rows]="rows()"
+>
 </textarea>

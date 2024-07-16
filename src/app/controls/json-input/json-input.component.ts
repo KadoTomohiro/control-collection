@@ -1,4 +1,4 @@
-import {Component, model, signal} from '@angular/core';
+import {Component, input, model, signal} from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
@@ -28,9 +28,13 @@ export type JsonSyntaxErrorType = true
 })
 export class JsonInputComponent implements ControlValueAccessor, Validator{
 
+  readonly rows = input<number>(5)
+
   readonly value = model<Object | null>(null);
   readonly stringifyValue = signal<string>('');
   readonly disabled = signal<boolean>(false);
+
+
   readonly #touched = signal<boolean>(false);
   readonly #isParsable = signal<boolean>(true);
 

@@ -61,7 +61,7 @@ export class ToggleButtonComponent implements ControlValueAccessor, Validator{
     const value = this.value()
     const optionValues: Options = this.list().map((option: Option) => option.value);
     if (!optionValues.includes(value)) {
-      return { invalidOption: true };
+      return { optionRange: value };
     }
 
     return null;

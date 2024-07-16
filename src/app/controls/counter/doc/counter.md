@@ -8,10 +8,10 @@
 
 ## Inputs
 
-| Name | Type     | Description |
-|------|----------|-------------|
-| min  | `number` | 入力を制限する最小値  |
-| max  | `number` | 入力を制限する最大値  |
+| Name | Type     | required | default | Description |
+|------|----------|----------|---------|-------------|
+| min  | `number` | false    | -       | 入力を制限する最小値  |
+| max  | `number` | false    | -       | 入力を制限する最大値  |
 
 ## Outputs
 

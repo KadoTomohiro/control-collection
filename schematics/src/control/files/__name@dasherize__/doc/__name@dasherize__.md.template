@@ -11,9 +11,8 @@
 
 ## Original Validation
 
-| Error | Validation Error Type                   | Description        |
-|-------|-----------------------------------------|--------------------|
-
+| Name | Type     | required | default | Description |
+|------|----------|----------|---------|-------------|
 
 ## Exception
 

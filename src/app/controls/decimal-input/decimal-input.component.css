@@ -5,3 +5,6 @@ input {
 .integer {
   text-align: right;
 }
+.fraction {
+  text-align: left;
+}
