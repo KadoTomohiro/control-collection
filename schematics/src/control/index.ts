@@ -59,6 +59,7 @@ export function control(options: ControlSchema): Rule {
       applyTemplates({
         classify: strings.classify,
         dasherize: strings.dasherize,
+        camelize: strings.camelize,
         name: options.name,
         prefix,
       }),

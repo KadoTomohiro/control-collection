@@ -13,7 +13,10 @@ export class ControlDemoService {
   #documentProperties  = signal<ControlDemoProperty>({})
 
   readonly controlDemoProperties = computed<ControlDemoProperty>(() => this.#documentProperties());
-  readonly controlNames = computed<string[]>(() => Object.keys(this.#documentProperties()))
+  readonly controlNames = computed<string[]>(() => {
+    console.log(this.#documentProperties())
+    return Object.keys(this.#documentProperties())
+  })
 
 
   constructor() {

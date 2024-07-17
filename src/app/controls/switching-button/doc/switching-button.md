@@ -1,0 +1,32 @@
+## Description
+
+## Value Type
+
+## Inputs
+
+| Name | Type     | Description |
+|------|----------|-------------|
+
+## Outputs
+
+## Original Validation
+
+| Name | Type     | required | default | Description |
+|------|----------|----------|---------|-------------|
+
+## Exception
+
+
+## Usage
+
+Reactive Formsのコントロールとして使用する。
+
+```html
+<app-switching-button [FormControl]="control"></app-switching-button>
+```
+
+```typescript
+class ExampleComponent {
+  control = new FormControl<number>()
+}
+```

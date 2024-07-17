@@ -19,8 +19,8 @@ export class <%= classify(name) %>DemoComponent {
   control = new FormControl<any>(0)
 }
 
-const <%= camelize(name)=>DemoProp: ControlDemoProperty = {
-  counter: [
+const <%= camelize(name) %>DemoProp: ControlDemoProperty = {
+  <%= camelize(name) %>: [
     {
       title: 'デモ',
       component: <%= classify(name) %>DemoComponent,
@@ -28,4 +28,4 @@ const <%= camelize(name)=>DemoProp: ControlDemoProperty = {
   ],
 }
 
-export const  <%= camelize(name)=>DemoProvider = {provide: CONTROL_DOCUMENT_PROPERTIES, useValue: <%= camelize(name)=>DemoProp, multi: true}
+export const  <%= camelize(name)%>DemoProvider = {provide: CONTROL_DOCUMENT_PROPERTIES, useValue: <%= camelize(name)%>DemoProp, multi: true}

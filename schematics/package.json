@@ -6,7 +6,7 @@
     "build": "npm run clean && npm run compile && npm run copy-files && npm run copy-packagejson",
     "clean": "rimraf dist/schematics",
     "compile": "tsc -p tsconfig.json",
-    "copy-files": "copyfiles -u 1 src/collection.json src/**/*.json src/**/files/**/* ../dist/schematics",
+    "copy-files": "copyfiles -u 1 src/collection.json src/**/*.json src/**/files/**/* src/**/files/**/**/* ../dist/schematics",
     "copy-packagejson": "copyfiles package.json ../dist/schematics",
     "test": "npm run build && jasmine src/**/*_spec.js"
   },
