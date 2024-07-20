@@ -1,4 +1,4 @@
-import { Component, model, signal } from '@angular/core';
+import {Component, computed, input, model, signal} from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
@@ -7,7 +7,7 @@ import {
   Validator,
   ValidationErrors
 } from "@angular/forms";
-import { toObservable } from "@angular/core/rxjs-interop";
+import {Options} from "@models/options/options";
 
 @Component({
   selector: 'app-switching-button',
@@ -22,9 +22,13 @@ import { toObservable } from "@angular/core/rxjs-interop";
 })
 export class SwitchingButtonComponent implements ControlValueAccessor, Validator{
 
+  readonly list = input.required<Options>();
+
   readonly value = model<any>();
   readonly disabled = signal<boolean>(false);
   readonly #touched = signal<boolean>(false);
+
+  readonly selected = computed(() => this.list().find((opt)=> opt.value === this.value()))
 
   #onChange = (_value: any) => {};
   #onTouched = () => {};
