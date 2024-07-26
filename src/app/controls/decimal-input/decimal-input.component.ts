@@ -1,7 +1,8 @@
 import {Component, computed, input, model, signal} from '@angular/core';
 import {
   AbstractControl,
-  ControlValueAccessor, FormsModule,
+  ControlValueAccessor,
+  FormsModule,
   NG_VALIDATORS,
   NG_VALUE_ACCESSOR,
   ValidationErrors,
@@ -9,6 +10,7 @@ import {
 } from '@angular/forms';
 import {Decimal, DecimalFormat} from '@models/decimal/decimal';
 import {decimalValidator} from "@controls/decimal-input/decimal-validator";
+import {DecimalPipe} from "@angular/common";
 
 /**
  * 実数入力コンポーネント
@@ -17,7 +19,8 @@ import {decimalValidator} from "@controls/decimal-input/decimal-validator";
   selector: 'app-decimal-input',
   standalone: true,
   imports: [
-    FormsModule
+    FormsModule,
+    DecimalPipe
   ],
   providers: [
     {provide: NG_VALUE_ACCESSOR, useExisting: DecimalInputComponent, multi: true},

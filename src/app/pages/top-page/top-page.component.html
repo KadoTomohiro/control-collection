@@ -1,3 +1,13 @@
 <header>
   <h2>トップページ</h2>
 </header>
+
+<app-select (change)="change($event)"></app-select>
+
+<form [formGroup]="form">
+  <input type="radio" appSelector formControlName="radio">
+
+</form>
+
+<app-control-status [control]="form">
+</app-control-status>

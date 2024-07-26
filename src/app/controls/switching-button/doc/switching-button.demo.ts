@@ -5,19 +5,22 @@ import {ControlDemoProperty} from "@domain/control-document/component-info";
 import {CONTROL_DOCUMENT_PROPERTIES} from "@domain/control-document/control-demo.service";
 import {ControlFieldComponent} from "@parts/control-field/control-field.component";
 import {Options} from "@models/options/options";
+import {SelectorDirective} from "@controls/selector/selector.directive";
+import {ControlStatusComponent} from "@domain/control-status/control-status.component";
 
 @Component({
   selector: 'app-switching-button-demo',
   template: `
     <app-control-field label="SwitchingButton">
-      <app-switching-button [formControl]="control" [list]="options"></app-switching-button>
+      <app-switching-button appSelector [formControl]="control" [options]="options"></app-switching-button>
     </app-control-field>
+    <app-control-status [control]="control"></app-control-status>
   `,
-  imports: [SwitchingButtonComponent, ReactiveFormsModule, ControlFieldComponent],
+  imports: [SwitchingButtonComponent, ReactiveFormsModule, ControlFieldComponent, SelectorDirective, ControlStatusComponent],
   standalone: true
 })
 export class SwitchingButtonDemoComponent {
-  control = new FormControl<any>(0)
+  control = new FormControl<any>(1)
 
   options: Options = [
     {label: '1', value: 1},
