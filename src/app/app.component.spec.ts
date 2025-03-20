@@ -17,7 +17,7 @@ describe('AppComponent', () => {
   it(`should have the 'control-collection' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('control-collection');
+    expect(app).toEqual('control-collection');
   });
 
   it('should render title', () => {

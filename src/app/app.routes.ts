@@ -17,4 +17,9 @@ export const routes: Routes = [
       }
     ]
   },
+  {
+    path: 'articles/:article',
+    loadComponent: () => import('@pages/article-page/article-page.component')
+      .then(m => m.ArticlePageComponent),
+  }
 ];

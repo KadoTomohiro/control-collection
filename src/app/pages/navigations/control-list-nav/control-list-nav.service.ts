@@ -1,14 +1,10 @@
 import {inject, Injectable} from '@angular/core';
 import * as changeCase from "change-case";
 import {ControlDemoService} from "@domain/control-document/control-demo.service";
-
-export type ControlPageList = {
-  path: string,
-  label: string
-} []
+import {NavigationList} from "@pages/navigations/navigation";
 
 @Injectable()
-export class ControlListPageService {
+export class ControlListNavService {
 
   #controlDemoService: ControlDemoService
 
@@ -16,7 +12,7 @@ export class ControlListPageService {
     this.#controlDemoService = inject(ControlDemoService);
   }
 
-  getPageList(): ControlPageList{
+  getPageList(): NavigationList{
     return this.#controlDemoService.controlNames()
       .map(name => {
         const path = name;

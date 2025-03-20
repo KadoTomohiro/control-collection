@@ -1,6 +1,6 @@
 :host {
   display: grid;
-  grid-template-columns: 10rem auto;
+  grid-template-columns: 15rem auto;
   grid-template-rows: 5rem auto;
 }
 
@@ -17,13 +17,4 @@ header a {
 
 h1 {
   margin: 0;
-}
-
-nav {
-  padding: 1rem;
-  text-underline: none;
-}
-
-nav h2 {
-  font-size: 1rem;
 }

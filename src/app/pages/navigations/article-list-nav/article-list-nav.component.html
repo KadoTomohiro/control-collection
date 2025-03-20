@@ -1,0 +1,10 @@
+<h3>
+  記事一覧
+</h3>
+<ul>
+  @for (navigationItem of navigationList(); track navigationItem.path) {
+    <li>
+      <a [routerLink]="['articles',navigationItem.path]">{{navigationItem.label}}</a>
+    </li>
+  }
+</ul>

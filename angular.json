@@ -28,6 +28,11 @@
                 "glob": "**/*.md",
                 "input": "src/app/controls/",
                 "output": "/docs"
+              },
+              {
+                "glob": "**/*.md",
+                "input": "src/app/articles/",
+                "output": "/articles"
               }
             ],
             "styles": [

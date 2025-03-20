@@ -8,6 +8,7 @@ import {customValidationMessages} from "./setings/custom-validation-messages";
 import {provideHttpClient} from "@angular/common/http";
 import {CLIPBOARD_OPTIONS, ClipboardButtonComponent, provideMarkdown} from "ngx-markdown";
 import {provideControlDemoProperties} from "@controls/provideControlDemo";
+import {provideArticleNames} from "./articles/provideArticleNames";
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -23,6 +24,7 @@ export const appConfig: ApplicationConfig = {
       },
     }),
     provideControlDemoProperties(),
+    provideArticleNames(),
     {provide: APP_VALIDATION_MESSAGES, useValue: builtInValidationMessages, multi: true},
     {provide: APP_VALIDATION_MESSAGES, useValue: customValidationMessages, multi: true},
   ],

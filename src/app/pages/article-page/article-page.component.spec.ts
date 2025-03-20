@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ControlListPageComponent } from './control-list-page.component';
+import { ArticlePageComponent } from './article-page.component';
 
-describe('ControlListPageComponent', () => {
-  let component: ControlListPageComponent;
-  let fixture: ComponentFixture<ControlListPageComponent>;
+describe('ArticlePageComponent', () => {
+  let component: ArticlePageComponent;
+  let fixture: ComponentFixture<ArticlePageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ControlListPageComponent]
+      imports: [ArticlePageComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ControlListPageComponent);
+    fixture = TestBed.createComponent(ArticlePageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -12,7 +12,7 @@ import {ControlStatusComponent} from "@domain/control-status/control-status.comp
   selector: 'app-switching-button-demo',
   template: `
     <app-control-field label="SwitchingButton">
-      <app-switching-button appSelector [formControl]="control" [options]="options"></app-switching-button>
+      <app-switching-button [formControl]="control" [options]="options"></app-switching-button>
     </app-control-field>
     <app-control-status [control]="control"></app-control-status>
   `,

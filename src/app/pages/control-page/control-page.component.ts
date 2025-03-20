@@ -2,13 +2,9 @@ import {Component, computed, inject, OnDestroy, signal, Type} from '@angular/cor
 import {ActivatedRoute, RouterOutlet} from "@angular/router";
 import {filter, map, Subscription} from "rxjs";
 import {JsonPipe, NgComponentOutlet} from "@angular/common";
-import {FormControl, FormControlDirective} from "@angular/forms";
 import {ControlStatusComponent} from "@domain/control-status/control-status.component";
 import {HttpClient} from "@angular/common/http";
 import {MarkdownComponent, MarkdownModule, MarkdownService} from "ngx-markdown";
-import {ControlDemoService} from "@domain/control-document/control-demo.service";
-import {ControlDemoProperty} from "@domain/control-document/component-info";
-import * as changeCase from "change-case";
 import {ControlPageService} from "@pages/control-page/control-page.service";
 import {TabComponent} from "@parts/tab/tab.component";
 import {Tab} from "@parts/tab/tab";

@@ -19,11 +19,12 @@ import {SelectorDirective} from "@controls/selector/selector.directive";
   templateUrl: './switching-button.component.html',
   styleUrl: './switching-button.component.css',
   hostDirectives: [
+    { directive: SelectorDirective, inputs: ['options'] }
   ]
 })
 export class SwitchingButtonComponent{
   label = computed<string>(() => {
-    return this.selector.selected()?.label ?? ''
+    return this.selector.selectedLabel().toString();
   });
 
   selector: SelectorDirective;
@@ -37,7 +38,7 @@ export class SwitchingButtonComponent{
   }
 
   getNextIndex() {
-    const currentIndex = this.selector.options().findIndex(option => option.value === this.selector.selected()?.value)
+    const currentIndex = this.selector.options().findIndex(option => option.value === this.selector.selectedValue())
     return (currentIndex + 1) % this.selector.options().length
   }
 

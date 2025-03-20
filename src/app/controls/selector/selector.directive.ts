@@ -1,6 +1,9 @@
-import {Component, computed, Directive, inject, Injector, input, output, signal} from '@angular/core';
+import {computed, Directive, input, output, signal} from '@angular/core';
 import {Option, Options} from "@models/options/options";
 import {ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl} from "@angular/forms";
+
+type Optionable<T = any> = Option<T> | null | undefined;
+type OptionableValue<T = any> = T | null | undefined;
 
 @Directive({
   selector: '[appSelector]',
@@ -12,9 +15,14 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl} from "@angular/forms
 export class SelectorDirective implements ControlValueAccessor{
 
   options = input<Options>([])
-  selected = signal<Option | null | undefined>(null)
-  value = computed(() => this.selected()?.value)
-  label = computed(() => this.selected()?.label)
+
+  selected = signal<Optionable>(null)
+  selectedValue = computed<OptionableValue>(() => this.selected()?.value)
+  selectedLabel = computed<string | string[]>(() => this.selected()?.label ?? '')
+
+  multiple = input(false)
+
+  change = output<Optionable>()
 
   readonly disabled= signal(false);
   readonly touched = signal<boolean>(false);
@@ -65,23 +73,33 @@ export class SelectorDirective implements ControlValueAccessor{
     if (this.disabled()) return;
     this.markAsDirty()
     this.selected.set(value)
-    this.#onChange(this.value())
+    this.#onChange(this.selectedValue())
+    this.change.emit(value)
   }
+
+  #getValue(option: Optionable): OptionableValue {
+    if (Array.isArray(option)) {
+      return option.map(option => option.value)
+    } else if (option instanceof Option) {
+      return option.value
+    }
+    return null
+  }
+
+  #getLabel(option: Optionable): string | string[] {
+    if (Array.isArray(option)) {
+      return option.map(option => option.label)
+    } else if (option instanceof Option) {
+      return option.label
+    }
+    return ''
+  }
+}
+
+class SingleSelector {
 
 }
 
-@Component({
-  selector: 'app-select',
-  standalone: true,
-  template: `<select (change)="onChange($event)">
-    <option value="1">1</option>
-    <option value="2">2</option>
-  </select>`
-})
-export class SelectComponent {
-  change = output<string>()
-  protected onChange (event: Event){
-    this.change.emit('')
-    // event.stopPropagation()
-  }
+class MultipleSelector {
+
 }

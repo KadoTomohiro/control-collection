@@ -53,6 +53,23 @@ markdown {
     border-radius: 2px;
   }
 
+  h1, h2, h3, h4, h5, h6{
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  p, ul, ol, pre {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  ul, ol {
+    padding-left: 1rem;
+  }
+
+  p {
+    text-indent: 1rem;
+  }
 }
 h1 {
   margin-top: 1.5rem;
