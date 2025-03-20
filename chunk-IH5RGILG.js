@@ -1,1 +1,0 @@
-import"./chunk-2RYEIVLG.js";var t=[{path:"",loadComponent:()=>import("./chunk-4SZJ76W7.js").then(o=>o.ControlDocumentComponent)},{path:"demo",loadComponent:()=>import("./chunk-4LFESOPR.js").then(o=>o.DemoTabComponent)}];export{t as controlPageRoute};
